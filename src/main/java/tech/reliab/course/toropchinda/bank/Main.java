@@ -1,7 +1,13 @@
 package tech.reliab.course.toropchinda.bank;
 
+import tech.reliab.course.toropchinda.bank.entity.Bank;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        Bank bank = new Bank((short)1, "LevaBank228");
+        bank.delete();
+        bank.print();
+
     }
 }
