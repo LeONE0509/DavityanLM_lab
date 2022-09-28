@@ -4,7 +4,7 @@ import tech.reliab.course.toropchinda.bank.service.impl.BankOfficeService;
 
 public class BankOffice extends Bank implements BankOfficeService {
     private Short id;
-    private String name;
+    protected String name;
     private String address;
     private Boolean activityStatus;
     private Boolean mayToLocateAtmStatus;
@@ -16,12 +16,17 @@ public class BankOffice extends Bank implements BankOfficeService {
     private Integer rent;
 
 
-    public BankOffice(short id, String name, String address) {
-        super(id, name);
+    public BankOffice(Bank bank, String name, String address) {
+        super(bank.id, bank.name);
+        if(bank.id == null){
+            System.out.println("ID банка (наследник офис) не может равняться нулю, проверь код");
+            return;
+        }
 
         /* Office ID is variable Bank.officeQty + 1 */
-        super.officeQty++;
-        this.id = super.officeQty;
+        /* ID офиса - это количество уже существующих офисов + 1 */
+        bank.addOffice();
+        this.id = bank.officeQty;
 
         /* Так как в условиях лабы не сказаны значения по умолчанию
         * Ставлю по своему умотрению */
@@ -39,12 +44,24 @@ public class BankOffice extends Bank implements BankOfficeService {
 
     @Override
     public void print(){
+        /* Обработка исключительных ситуаций */
         if(this.id == null){
             System.out.println("Кажется нет связи с офисом, возможно вы его удалили\n" +
                     "Проверьте корзину :))");
+            return;
         }
-        return;
 
+        System.out.println("ID Офиса " + this.id);
+        System.out.println("Название: " + this.name);
+        System.out.println("Адрес: " + this.address);
+        System.out.println("Активность: " + this.activityStatus);
+        System.out.println("Возможность разместить банкомат: " + this.mayToLocateAtmStatus);
+        System.out.println("Кол-во банкоматов в офисе: " + this.atmQty);
+        System.out.println("Возможность взять кредит: " + this.mayToCreditStatus);
+        System.out.println("Возможность снять деньги: " + this.cashingOutStatus);
+        System.out.println("Возможность внести деньги: " + this.cashingInStatus);
+        System.out.println("Кол-во денег в офисе: " + this.moneyQtyInOffice);
+        System.out.println("Стоимость аренды: " + this.rent);
 
     }
 

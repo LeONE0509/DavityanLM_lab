@@ -5,8 +5,8 @@ import tech.reliab.course.toropchinda.bank.service.impl.BankService;
 import java.util.Random;
 
 public class Bank implements BankService {
-    private Short id;
-    private String name;
+    protected Short id;
+    protected String name;
     protected Short officeQty;
     protected Integer atmQty;
     protected Integer employeeQty;
@@ -15,25 +15,30 @@ public class Bank implements BankService {
     protected Long moneyQty;
     private Float percent;
 
-    public Bank(short id, String name){
-        /* Variables completed by parameters */
+    public Bank(Short id, String name){
+        /* Проверка исключительной ситуации*/
+        if(id == null) {
+            System.out.println("ID банка (родитель) не может равняться нулю, проверь код");
+            return;
+        }
+        /* Переменные, которые присваиваются параметрами */
         this.id = id;
         this.name = name;
 
-        /* Default variables */
+        /* Переменные, получившие значения по умолчанию */
         this.officeQty = 0;
         this.atmQty = 0;
         this.employeeQty = 0;
         this.clientQty = (long)0;
 
-        /* Generate bank rating (var rate) */
+        /* Генерация рейтинга банка */
         Random random = new Random();
         int i = random.nextInt(101);
         this.rate = (byte)i;
 
         this.moneyQty = (long)i * 10000;
 
-        /* Generate bank interest rate (var percent)*/
+        /* Генерация процентной ставки банка */
         i = random.nextInt(21);
         float percentProccesing = 1 - (float)(rate * 0.01);
         this.percent = i * percentProccesing + (float)4.01;
