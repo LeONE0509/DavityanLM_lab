@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.StringTokenizer;
 
 public class User implements UserService {
-    private Long id;
+    protected Long id;
     private String fullName;
     private Date birthDate;
     private String workPlace;
@@ -111,7 +111,7 @@ public class User implements UserService {
         this.id = null;
         this.workPlace = null;
         this.monthIncome = null;
-        this.paymentAccount = null;
+        this.paymentAccount.delete();
         this.creditAccount = null;
         this.creditRate = null;
     }

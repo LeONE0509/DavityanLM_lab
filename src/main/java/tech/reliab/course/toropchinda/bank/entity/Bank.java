@@ -13,7 +13,7 @@ public class Bank implements BankService {
     protected Long clientQty;
     private Byte rate;
     protected Long moneyQty;
-    private Float percent;
+    protected Float percent;
 
     public Bank(Short id, String name){
         /* Проверка исключительной ситуации*/
