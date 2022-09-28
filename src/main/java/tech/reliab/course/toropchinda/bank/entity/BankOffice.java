@@ -5,7 +5,7 @@ import tech.reliab.course.toropchinda.bank.service.impl.BankOfficeService;
 public class BankOffice extends Bank implements BankOfficeService {
     private Short id;
     protected String name;
-    private String address;
+    protected String address;
     private Boolean activityStatus;
     private Boolean mayToLocateAtmStatus;
     private Byte atmQty;

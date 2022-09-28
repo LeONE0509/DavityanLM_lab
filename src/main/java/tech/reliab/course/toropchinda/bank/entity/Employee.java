@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Employee implements EmployeeService {
     private Integer id;
-    private String fullName;
+    protected String fullName;
     private Date birthDate;
     private String post;
     private Bank bank;
