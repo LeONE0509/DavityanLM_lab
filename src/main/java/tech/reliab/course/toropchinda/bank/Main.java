@@ -18,10 +18,11 @@ public class Main {
         BankAtm bankAtm = new BankAtm("Samsung", bank, bankOffice, employee);
         //bankAtm.print();
 
+
         User user = new User("Иванов Иван", new Date(2000, 3, 7), "БГТУ", bank);
         //user.print();
 
 
-        bank.print();
+        //bank.print();
     }
 }

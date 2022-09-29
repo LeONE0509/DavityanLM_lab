@@ -2,7 +2,7 @@ package tech.reliab.course.toropchinda.bank.entity;
 
 import tech.reliab.course.toropchinda.bank.service.impl.BankOfficeService;
 
-public class BankOffice extends Bank implements BankOfficeService {
+public class BankOffice implements BankOfficeService {
     private Short id;
     protected String name;
     protected String address;
@@ -17,7 +17,7 @@ public class BankOffice extends Bank implements BankOfficeService {
 
 
     public BankOffice(Bank bank, String name, String address) {
-        super(bank.id, bank.name);
+
         if(bank.id == null){
             System.out.println("ID банка (наследник офис) не может равняться нулю, проверь код");
             return;
@@ -76,6 +76,11 @@ public class BankOffice extends Bank implements BankOfficeService {
     }
 
     @Override
+    public void addAtm() {
+        this.atmQty++;
+    }
+
+    @Override
     public void setMayToCreditStatus(Boolean status) {
         this.mayToCreditStatus = status;
     }
@@ -103,7 +108,6 @@ public class BankOffice extends Bank implements BankOfficeService {
     @Override
     public void delete(){
 
-        super.officeQty--;
         this.id = null;
         this.name = null;
         this.activityStatus = null;

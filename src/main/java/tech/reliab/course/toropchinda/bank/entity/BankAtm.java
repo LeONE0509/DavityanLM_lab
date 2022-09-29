@@ -6,13 +6,36 @@ public class BankAtm implements AtmService {
     private Integer id;
     private String name;
     private String address;
-    private String status;
     private Bank bank;
     private Employee employee;
     private Boolean cashOutStatus;
     private Boolean cashInStatus;
     private Long moneyQtyInAtm;
     private Integer serviceCost;
+    private Status status;
+    public enum Status{
+        WORKING("Работает"),
+        OUTOFSERVICE("Не работает"),
+        OUTOFMONEY("Нет денег");
+
+        private String title;
+
+        Status(String title){
+            this.title = title;
+        }
+
+        public String getTitle(){
+            return title;
+        }
+
+        @Override
+        public String toString(){
+            return "Статус: " + title;
+        }
+
+    }
+
+
 
     public BankAtm(String name, Bank bank, BankOffice bankOffice, Employee employee){
         /* Добавляет к количеству банкоматов в банке всего + 1
@@ -21,7 +44,7 @@ public class BankAtm implements AtmService {
         this.id = bank.atmQty;
         this.name = name;
         this.address = bankOffice.address;
-        this.status = "не работает";
+        this.status = Status.OUTOFSERVICE;
         this.bank = bank;
         this.employee = employee;
         this.cashOutStatus = false;
@@ -45,7 +68,7 @@ public class BankAtm implements AtmService {
         System.out.println("\nID Банкомата: " + this.id);
         System.out.println("Название банкомата: " + this.name);
         System.out.println("Адрес: " + this.address);
-        System.out.println("Статуст: " + this.status);
+        System.out.println(this.status.toString());
         System.out.println("Банк владелец: " + this.bank.name);
         System.out.println("Обслуживает: " + this.employee.fullName);
         System.out.println("Выдача денег: " + this.cashOutStatus);
@@ -55,16 +78,8 @@ public class BankAtm implements AtmService {
     }
 
     @Override
-    public void setStatus(String status) {
-        if (status == "работает" || status == "не работает" || status == "нет денег"){
-            this.status = status;
-        } else {
-            System.out.println("не возможно указать такой статус" +
-                    "Попробуйте" +
-                    "работает" +
-                    "не работает" +
-                    "нет денег");
-        }
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     @Override
@@ -101,7 +116,7 @@ public class BankAtm implements AtmService {
     @Override
     public void delete() {
         this.id = null;
-        this.status = "не работает";
+        this.status = Status.OUTOFSERVICE;
         this.bank = null;
         this.moneyQtyInAtm = null;
         this.cashOutStatus = null;
