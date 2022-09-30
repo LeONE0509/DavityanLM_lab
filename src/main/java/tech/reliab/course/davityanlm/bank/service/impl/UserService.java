@@ -8,7 +8,5 @@ import java.util.Date;
 
 public interface UserService {
 
-    void print(User user);
-
     void delete(User user);
 }

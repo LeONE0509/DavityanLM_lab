@@ -7,6 +7,7 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) {
         Bank myBank = new Bank(1, "LevaBank228");
+        myBank.addOffice(myBank);
         myBank.addClient(myBank);
         System.out.println(myBank);
 

@@ -3,7 +3,7 @@ package tech.reliab.course.davityanlm.bank.entity;
 import tech.reliab.course.davityanlm.bank.service.impl.PaymentAccountService;
 import tech.reliab.course.davityanlm.bank.service.impl.operations.PaymentServiceOperations;
 
-public class PaymentAccount implements PaymentServiceOperations {
+public class PaymentAccount extends PaymentServiceOperations {
     private Integer id;
     private User user;
     private Bank bank;

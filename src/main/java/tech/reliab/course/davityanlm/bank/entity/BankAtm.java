@@ -4,7 +4,7 @@ import tech.reliab.course.davityanlm.bank.service.impl.AtmService;
 import tech.reliab.course.davityanlm.bank.service.impl.operations.AtmServiceOperations;
 import tech.reliab.course.davityanlm.bank.service.impl.operations.BankOfficeServiceOperations;
 
-public class BankAtm implements AtmServiceOperations{
+public class BankAtm extends AtmServiceOperations{
     private Integer id;
     private String name;
     private String address;

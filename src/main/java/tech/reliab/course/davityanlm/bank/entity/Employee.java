@@ -5,7 +5,7 @@ import tech.reliab.course.davityanlm.bank.service.impl.operations.EmployeeServic
 
 import java.util.Date;
 
-public class Employee implements EmployeeServiceOperations {
+public class Employee extends EmployeeServiceOperations {
     private Integer id;
     protected String fullName;
     private Date birthDate;

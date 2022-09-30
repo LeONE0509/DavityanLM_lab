@@ -4,7 +4,7 @@ import tech.reliab.course.davityanlm.bank.entity.BankOffice;
 
 public interface BankOfficeService {
 
-    void print(BankOffice bankOffice);
+
 
     void addAtm(BankOffice bankOffice);
 

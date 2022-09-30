@@ -3,7 +3,7 @@ package tech.reliab.course.davityanlm.bank.entity;
 import tech.reliab.course.davityanlm.bank.service.impl.BankOfficeService;
 import tech.reliab.course.davityanlm.bank.service.impl.operations.BankOfficeServiceOperations;
 
-public class BankOffice implements BankOfficeServiceOperations {
+public class BankOffice extends BankOfficeServiceOperations {
     private Integer id;
     protected String name;
     protected String address;

@@ -5,7 +5,7 @@ import tech.reliab.course.davityanlm.bank.service.impl.operations.CreditAccountS
 
 import java.util.Date;
 
-public class CreditAccount implements CreditAccountServiceOperations {
+public class CreditAccount extends CreditAccountServiceOperations {
     private Integer id;
     private User user;
     private Bank bank;

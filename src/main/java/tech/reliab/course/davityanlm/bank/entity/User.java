@@ -6,7 +6,7 @@ import tech.reliab.course.davityanlm.bank.service.impl.operations.UserServiceOpe
 import java.util.Date;
 import java.util.Random;
 
-public class User implements UserServiceOperations {
+public class User extends UserServiceOperations {
     private Integer id;
     private String fullName;
     private Date birthDate;
