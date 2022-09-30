@@ -34,7 +34,6 @@ public class BankAtm implements AtmServiceOperations {
         public String toString(){
             return "Статус: " + title;
         }
-
     }
 
     public BankAtm(String name, Bank bank, BankOffice bankOffice, Employee employee){
