@@ -30,6 +30,30 @@ public class Employee implements EmployeeServiceOperations {
         setSalary(0);
     }
 
+    @Override
+    public String toString(){
+        if (getId() == null){
+            return "\nСотрудник{" +
+                    "\nКажется данного сотрудника уволили" +
+                    "\nФИО: " + getFullName() +
+                    "\nДата рождения: " + getBirthDate() +
+                    "\nРаботал в " + getBankOffice().getName() +
+                    "\nДолжность: " + getPost() +
+                    "\nЗарплата: " + getSalary() +
+                    "\n}";
+        }
+        return "\nСотрудник{" +
+                "\nID сотрудника: " + getId() +
+                "\nФИО: " + getFullName() +
+                "\nДата рождения: " + getBirthDate() +
+                "\nРаботает в " + getBankOffice().getName() +
+                "\nВозможность выдать кредит: " + getMayToGiveCredit() +
+                "\nРаботает ли онлайн: " + getOnlineOrNot() +
+                "\nДолжность: " + getPost() +
+                "\nЗарплата: " + getSalary() +
+                "\n}";
+    }
+
     public Integer getId() {
         return this.id;
     }

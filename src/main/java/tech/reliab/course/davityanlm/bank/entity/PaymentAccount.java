@@ -16,6 +16,19 @@ public class PaymentAccount implements PaymentServiceOperations {
         setCurrentSum(0);
     }
 
+    @Override
+    public String toString(){
+        if(getId() == null){
+            return "\nТакого счета больше не существует, скорее всего пользователь больше не клиент банка";
+        }
+        return "\nПлатежный счет{" +
+                "\nID счета: " + getId() +
+                ",\nПользователь счета: " + getUser().getFullName() +
+                ",\nБанк счета: " + getBank().getName() +
+                ",\nТекущая сумма: " + getCurrentSum() +
+                "\n}";
+    }
+
     public Integer getId() {
         return this.id;
     }

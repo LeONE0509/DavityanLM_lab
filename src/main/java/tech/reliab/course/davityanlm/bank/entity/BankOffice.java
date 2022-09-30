@@ -31,6 +31,25 @@ public class BankOffice implements BankOfficeServiceOperations {
         setMoneyQtyInOffice(0);
         setRent(0);
     }
+    @Override
+    public String toString(){
+        if (getId() == null){
+            return "Кажется нет связи с офисом, возможно вы его удалили. Проверьте корзину :))";
+        }
+        return "\nБанковский офис{" +
+                "\nID Офиса: " + getId() +
+                ",\nНазвание: " + getName() +
+                ",\nАдрес: " + getAddress() +
+                ",\nАктивность: " + getActivityStatus() +
+                ",\nВозможность разместить банкомат: " + getMayToLocateAtmStatus() +
+                ",\nКол-во банкоматов в офисе: " + getAtmQty() +
+                ",\nВозможность взять кредит: " + getMayToCreditStatus() +
+                ",\nВозможность снять деньги: " + getCashingOutStatus() +
+                ",\nВозможность внести деньги: " + getCashingInStatus() +
+                ",\nКол-во денег в офисе: " + getMoneyQtyInOffice() +
+                ",\nСтоимость аренды: " + getRent() +
+                "\n}";
+    }
 
     public Integer getId(){
         return this.id;
