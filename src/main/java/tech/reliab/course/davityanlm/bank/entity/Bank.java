@@ -43,6 +43,24 @@ public class Bank implements BankServiceOperations {
         setPercent(percentProcessing);
     }
 
+    @Override
+    public String toString(){
+        if (getId() == null){
+            return "Кажется нет связи с банком, возможно вы его удалили, проверьте корзину :))";
+        }
+        return "Банк {" +
+                ",\nID Банка: " + getId() +
+                ",\nНазвание: " + getName() +
+                ",\nКол-во офисов: " + getOfficeQty() +
+                ",\nКол-во банкоматов: " + getAtmQty() +
+                ",\nКол-во сотрудников: " + getClientQty() +
+                ",\nКол-во клиентов: " + getClientQty() +
+                ",\nРейтинг: " + getRate() +
+                ",\nКол-во денег: " + getMoneyQty() +
+                ",\nПроцентная ставка: " + getPercent() +
+                "\n}";
+    }
+
     public Integer getId(){
         return this.id;
     }

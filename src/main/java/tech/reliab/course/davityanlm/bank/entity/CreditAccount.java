@@ -32,6 +32,23 @@ public class CreditAccount implements CreditAccountServiceOperations {
         setPaymentAccount(paymentAccount);
     }
 
+    @Override
+    public String toString(){
+        if(getId() == null){
+            return "Кажется данный кредитный счет закрыт";
+        }
+        return "\nКредитный счёт{ " +
+                "\nID кредитного счета: " + getId() +
+                ",\nБанк счета: " + getBank().getName() +
+                ",\nКредит выдал: " + getEmployee().getFullName() +
+                ",\nID платежного счета: " + getId() +
+                ",\nДата начала кредита: " + getStartCreditDate() +
+                ",\nДата окончания кредита: " + getFinishCreditDate() +
+                ",\nСумма кредита: " + getCreditSum() +
+                ",\nПроцент: " + getPercent() +
+                "\n}";
+    }
+
     public Integer getId(){
         return this.id;
     }

@@ -48,6 +48,33 @@ public class User implements UserServiceOperations {
         return 1000;
     }
 
+    @Override
+    public String toString(){
+        if (getId() == null) {
+            return "Клиент{" +
+                    "\nКажется это больше не наш клиент :((" +
+                    "\nФИО: " + getFullName() +
+                    ",\nДата рождения: " + getBirthDate() +
+                    "\n}";
+
+        }
+        String string = "\nПользователь{" +
+                "\nФИО: " + getFullName() +
+                ",\nДата рождения: " + getBirthDate() +
+                ",\nМесто работы: " + getWorkPlace() +
+                ",\nМесячный доход: " + getMonthIncome() +
+                ",\nКредитный рейтинг: " + getCreditRate();
+
+        if (getPaymentAccount() == null) {string += ",\nПлатежный счет: отсутствует";}
+        else{string += ",\nПлатежный счет: " + getPaymentAccount().getId();}
+
+        if (getCreditAccount() == null){string += ",\nКредитный счет: отсутствует";}
+        else{string += ",\nКредитный счет: " + getCreditAccount().getId();}
+
+        string += "\n}";
+        return string;
+
+    }
 
     public Integer getId() {
         return this.id;

@@ -4,7 +4,7 @@ import tech.reliab.course.davityanlm.bank.service.impl.AtmService;
 import tech.reliab.course.davityanlm.bank.service.impl.operations.AtmServiceOperations;
 import tech.reliab.course.davityanlm.bank.service.impl.operations.BankOfficeServiceOperations;
 
-public class BankAtm implements AtmServiceOperations {
+public class BankAtm implements AtmServiceOperations{
     private Integer id;
     private String name;
     private String address;
@@ -47,6 +47,31 @@ public class BankAtm implements AtmServiceOperations {
         setMoneyQtyInAtm(0);
         setServiceCost(0);
         setStatus(Status.OUTOFSERVICE);
+    }
+
+    @Override
+    public String toString(){
+        if(getId() == null){
+            return "Банкомат{" +
+                    ",\nДанный банкомат сейчас не используется" +
+                    ",\nНазвание: " + getName() +
+                    ",\nПоследний адрес: " + getAddress() +
+                    ",\nПоследний обслуживающий: " + getEmployee() +
+                    ",\nСтоимость обслуживания: " + getServiceCost() +
+                    "\n}";
+        }
+        return "\nБанкомат{" +
+                "\nID Банкомата: " + getId() +
+                ",\nНазвание: " + getName() +
+                ",\nАдрес: " + getAddress() +
+                ",\nСтатус: " + getStatus().toString() +
+                ",\nБанк владелец: " + getBank().getName() +
+                ",\nОбслуживает: " + getEmployee().getFullName() +
+                ",\nВыдача денег: " + getCashOutStatus() +
+                ",\nВнесение денег: " + getCashInStatus() +
+                ",\nКол-во денег внутри: " + getMoneyQtyInAtm() +
+                ",\nСтоимость обслуживания: " + getServiceCost() +
+                "\n}";
     }
 
     public Integer getId(){
