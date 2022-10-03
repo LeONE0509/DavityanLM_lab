@@ -1,4 +1,4 @@
-package tech.reliab.course.davityanlm.bank.service.impl.operations;
+package tech.reliab.course.davityanlm.bank.service;
 
 import tech.reliab.course.davityanlm.bank.entity.User;
 import tech.reliab.course.davityanlm.bank.service.impl.UserService;

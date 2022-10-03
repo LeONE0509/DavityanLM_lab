@@ -1,6 +1,6 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
-import tech.reliab.course.davityanlm.bank.service.impl.operations.AtmServiceOperations;
+import tech.reliab.course.davityanlm.bank.service.AtmServiceOperations;
 
 public class BankAtm extends AtmServiceOperations{
     private Integer id;
