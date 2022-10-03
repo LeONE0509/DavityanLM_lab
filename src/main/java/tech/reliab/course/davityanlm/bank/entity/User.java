@@ -1,6 +1,5 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
-import tech.reliab.course.davityanlm.bank.service.impl.UserService;
 import tech.reliab.course.davityanlm.bank.service.impl.operations.UserServiceOperations;
 
 import java.util.Date;
@@ -17,22 +16,17 @@ public class User extends UserServiceOperations {
     private PaymentAccount paymentAccount;
     private Integer creditRate;
 
-    public User(String fullName, Date birthDate, String workPlace ,Bank bank){
-        setId(bank.getClientQty());
+    public User(Integer id, String fullName, Date birthDate, String workPlace ,Bank bank){
+        setId(id);
         setFullName(fullName);
         setBirthDate(birthDate);
         setWorkPlace(workPlace);
-
-        /*Работа с рандомом*/
         Random random = new Random();
-        int i = random.nextInt(10001);
-        i += 500;
-        setMonthIncome(i);
-
+        setMonthIncome(random.nextInt(10001));
         setBank(bank);
         setCreditAccount(null);
         setPaymentAccount(null);
-        setCreditRate(calculateCreditRate(i));
+        setCreditRate(calculateCreditRate(this.monthIncome));
     }
 
     private Integer calculateCreditRate(Integer monthIncome){
@@ -121,7 +115,7 @@ public class User extends UserServiceOperations {
     }
 
 
-    public void setBirthDate(Date date) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 

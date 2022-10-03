@@ -12,5 +12,6 @@ public class UserServiceOperations implements UserService {
         user.setPaymentAccount(null);
         user.setCreditAccount(null);
         user.setCreditRate(null);
+        user = null;
     }
 }

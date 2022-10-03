@@ -1,7 +1,5 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
-import tech.reliab.course.davityanlm.bank.service.impl.BankService;
-import tech.reliab.course.davityanlm.bank.service.impl.operations.BankOfficeServiceOperations;
 import tech.reliab.course.davityanlm.bank.service.impl.operations.BankServiceOperations;
 
 import java.util.Random;
@@ -24,23 +22,10 @@ public class Bank extends BankServiceOperations {
         setAtmQty(0);
         setEmployeeQty(0);
         setClientQty(0);
-
-        /* Генерация рейтинга банка */
         Random random = new Random();
-        int i = random.nextInt(101);
-        setRate(i);
-
-        setMoneyQty(i * 10000);
-
-        /* Генерация процентной ставки банка */
-        i = random.nextInt(21);
-        float percentProcessing = 1 - (float)(rate * 0.01);
-        percentProcessing = i * percentProcessing + (float)4.01;
-        if(percentProcessing > 20){
-            percentProcessing = 20;
-        }
-
-        setPercent(percentProcessing);
+        setRate(random.nextInt(101));
+        setMoneyQty(random.nextInt(1000000));
+        setPercent(random.nextFloat(20));
     }
 
     @Override

@@ -21,6 +21,7 @@ public class CreditAccountServiceOperations implements CreditAccountService {
         creditAccount.setPercent(null);
         creditAccount.setEmployee(null);
         creditAccount.setPaymentAccount(null);
+        creditAccount = null;
     }
 
 }

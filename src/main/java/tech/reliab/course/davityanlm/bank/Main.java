@@ -12,25 +12,25 @@ public class Main {
         System.out.println(myBank);
 
 
-       BankOffice myBankOffice = new BankOffice(myBank, "Отделение №1", "улица Пушкина дом Колотушкина");
+       BankOffice myBankOffice = new BankOffice(1, "Отделение №1", "улица Пушкина дом Колотушкина");
         myBankOffice.addAtm(myBankOffice);
         System.out.println(myBankOffice);
 
-        Employee Vechost = new Employee("Вечность Лев", new Date(), myBank, myBankOffice, "Генеральный");
+        Employee Vechost = new Employee(1, "Вечность Лев", new Date(), myBank, myBankOffice, "Генеральный");
         Vechost.setSalary(228322);
         System.out.println(Vechost);
 
-        BankAtm myBankAtm = new BankAtm("Samsung", myBank, myBankOffice, Vechost);
+        BankAtm myBankAtm = new BankAtm(1, "Samsung", myBank, myBankOffice, Vechost);
         myBankAtm.addMoney(myBankAtm, 228322);
         System.out.println(myBankAtm);
 
-        User Leva = new User("Вечность Лев", new Date(), "LevaBank228", myBank);
+        User Leva = new User(1, "Вечность Лев", new Date(), "LevaBank228", myBank);
 
-        PaymentAccount pa = new PaymentAccount(Leva, myBank);
+        PaymentAccount pa = new PaymentAccount(1, Leva, myBank);
         pa.addMoney(pa, 228322);
         System.out.println(pa);
 
-        CreditAccount ca = new CreditAccount(Leva, myBank, Vechost, pa);
+        CreditAccount ca = new CreditAccount(1, Leva, myBank, Vechost, pa);
         ca.setCreditSum(1337);
         System.out.println(ca);
 
@@ -39,5 +39,6 @@ public class Main {
         Leva.setCreditAccount(ca);
         System.out.println(Leva);
 
+        Leva.delete(Leva);
     }
 }

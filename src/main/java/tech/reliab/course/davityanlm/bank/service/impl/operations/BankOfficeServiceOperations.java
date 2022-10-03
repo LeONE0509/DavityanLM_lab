@@ -20,5 +20,6 @@ public class BankOfficeServiceOperations implements BankOfficeService {
         bankOffice.setCashingInStatus(null);
         bankOffice.setMoneyQtyInOffice(null);
         bankOffice.setRent(null);
+        bankOffice = null;
     }
 }

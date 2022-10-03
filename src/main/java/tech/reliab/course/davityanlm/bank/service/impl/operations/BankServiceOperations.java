@@ -36,5 +36,6 @@ public class BankServiceOperations implements BankService {
         bank.setRate(null);
         bank.setMoneyQty(null);
         bank.setPercent(null);
+        bank = null;
     }
 }

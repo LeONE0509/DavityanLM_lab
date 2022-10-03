@@ -1,6 +1,6 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
-import tech.reliab.course.davityanlm.bank.service.impl.EmployeeService;
+
 import tech.reliab.course.davityanlm.bank.service.impl.operations.EmployeeServiceOperations;
 
 import java.util.Date;
@@ -16,10 +16,10 @@ public class Employee extends EmployeeServiceOperations {
     private Boolean mayToGiveCredit;
     private Integer salary;
 
-    public Employee(String fullName, Date birthDate, Bank bank, BankOffice bankOffice,
+    public Employee(Integer id, String fullName, Date birthDate, Bank bank, BankOffice bankOffice,
                     String post){
 
-        setId(bank.getEmployeeQty());
+        setId(id);
         setFullName(fullName);
         setBirthDate(birthDate);
         setPost(post);

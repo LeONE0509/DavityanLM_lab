@@ -1,6 +1,5 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
-import tech.reliab.course.davityanlm.bank.service.impl.PaymentAccountService;
 import tech.reliab.course.davityanlm.bank.service.impl.operations.PaymentServiceOperations;
 
 public class PaymentAccount extends PaymentServiceOperations {
@@ -9,8 +8,8 @@ public class PaymentAccount extends PaymentServiceOperations {
     private Bank bank;
     private Integer currentSum;
 
-    public PaymentAccount(User user, Bank bank){
-        setId(user.getId());
+    public PaymentAccount(Integer id, User user, Bank bank){
+        setId(id);
         setUser(user);
         setBank(bank);
         setCurrentSum(0);

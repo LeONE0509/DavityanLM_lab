@@ -9,5 +9,6 @@ public class EmployeeServiceOperations implements EmployeeService {
         employee.setBank(null);
         employee.setOnlineOrNot(null);
         employee.setMayToGiveCredit(null);
+        employee = null;
     }
 }

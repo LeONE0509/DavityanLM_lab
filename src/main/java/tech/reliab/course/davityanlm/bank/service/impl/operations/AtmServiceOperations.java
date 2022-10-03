@@ -1,7 +1,6 @@
 package tech.reliab.course.davityanlm.bank.service.impl.operations;
 
 import tech.reliab.course.davityanlm.bank.entity.BankAtm;
-import tech.reliab.course.davityanlm.bank.entity.Employee;
 import tech.reliab.course.davityanlm.bank.service.impl.AtmService;
 
 public class AtmServiceOperations implements AtmService {
@@ -27,6 +26,7 @@ public class AtmServiceOperations implements AtmService {
         bankAtm.setMoneyQtyInAtm(null);
         bankAtm.setCashOutStatus(null);
         bankAtm.setCashIntStatus(null);
+        bankAtm = null;
 
     }
 }

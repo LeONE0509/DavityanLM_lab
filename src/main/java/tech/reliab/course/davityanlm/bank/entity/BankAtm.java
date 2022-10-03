@@ -1,8 +1,6 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
-import tech.reliab.course.davityanlm.bank.service.impl.AtmService;
 import tech.reliab.course.davityanlm.bank.service.impl.operations.AtmServiceOperations;
-import tech.reliab.course.davityanlm.bank.service.impl.operations.BankOfficeServiceOperations;
 
 public class BankAtm extends AtmServiceOperations{
     private Integer id;
@@ -36,8 +34,8 @@ public class BankAtm extends AtmServiceOperations{
         }
     }
 
-    public BankAtm(String name, Bank bank, BankOffice bankOffice, Employee employee){
-        setId(bank.getAtmQty() + 1);
+    public BankAtm(Integer id, String name, Bank bank, BankOffice bankOffice, Employee employee){
+        setId(id);
         setName(name);
         setAddress(bankOffice.address);
         setBank(bank);

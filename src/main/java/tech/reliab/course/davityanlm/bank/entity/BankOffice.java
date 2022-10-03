@@ -1,6 +1,5 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
-import tech.reliab.course.davityanlm.bank.service.impl.BankOfficeService;
 import tech.reliab.course.davityanlm.bank.service.impl.operations.BankOfficeServiceOperations;
 
 public class BankOffice extends BankOfficeServiceOperations {
@@ -17,9 +16,8 @@ public class BankOffice extends BankOfficeServiceOperations {
     private Integer rent;
 
 
-    public BankOffice(Bank bank, String name, String address) {
-        bank.setOfficeQty(bank.getOfficeQty() + 1);
-        setId(bank.getOfficeQty());
+    public BankOffice(Integer id, String name, String address) {
+        setId(id);
         setName(name);
         setAddress(address);
         setActivityStatus(false);

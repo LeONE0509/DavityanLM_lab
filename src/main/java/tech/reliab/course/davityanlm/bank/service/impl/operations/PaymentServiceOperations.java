@@ -22,5 +22,6 @@ public class PaymentServiceOperations implements PaymentAccountService {
         paymentAccount.setUser(null);
         paymentAccount.setBank(null);
         paymentAccount.setCurrentSum(null);
+        paymentAccount = null;
     }
 }

@@ -1,6 +1,5 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
-import tech.reliab.course.davityanlm.bank.service.impl.CreditAccountService;
 import tech.reliab.course.davityanlm.bank.service.impl.operations.CreditAccountServiceOperations;
 
 import java.util.Date;
@@ -18,8 +17,8 @@ public class CreditAccount extends CreditAccountServiceOperations {
     private Employee employee;
     private PaymentAccount paymentAccount;
 
-    public CreditAccount(User user, Bank bank, Employee employee, PaymentAccount paymentAccount){
-        setId(user.getId());
+    public CreditAccount(Integer id, User user, Bank bank, Employee employee, PaymentAccount paymentAccount){
+        setId(id);
         setUser(user);
         setBank(bank);
         setStartCreditDate(new Date());
