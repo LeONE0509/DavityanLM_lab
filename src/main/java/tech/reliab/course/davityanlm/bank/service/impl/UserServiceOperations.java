@@ -1,7 +1,7 @@
-package tech.reliab.course.davityanlm.bank.service;
+package tech.reliab.course.davityanlm.bank.service.impl;
 
 import tech.reliab.course.davityanlm.bank.entity.User;
-import tech.reliab.course.davityanlm.bank.service.impl.UserService;
+import tech.reliab.course.davityanlm.bank.service.UserService;
 
 public class UserServiceOperations implements UserService {
 

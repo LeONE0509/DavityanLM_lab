@@ -1,6 +1,6 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
-import tech.reliab.course.davityanlm.bank.service.UserServiceOperations;
+import tech.reliab.course.davityanlm.bank.service.impl.UserServiceOperations;
 
 import java.util.Date;
 import java.util.Random;

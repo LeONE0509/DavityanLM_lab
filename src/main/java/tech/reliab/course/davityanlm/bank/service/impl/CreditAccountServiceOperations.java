@@ -1,7 +1,7 @@
-package tech.reliab.course.davityanlm.bank.service;
+package tech.reliab.course.davityanlm.bank.service.impl;
 
 import tech.reliab.course.davityanlm.bank.entity.CreditAccount;
-import tech.reliab.course.davityanlm.bank.service.impl.CreditAccountService;
+import tech.reliab.course.davityanlm.bank.service.CreditAccountService;
 
 public class CreditAccountServiceOperations implements CreditAccountService {
 

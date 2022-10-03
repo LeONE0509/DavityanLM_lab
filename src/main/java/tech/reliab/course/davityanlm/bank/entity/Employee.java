@@ -1,7 +1,7 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
 
-import tech.reliab.course.davityanlm.bank.service.EmployeeServiceOperations;
+import tech.reliab.course.davityanlm.bank.service.impl.EmployeeServiceOperations;
 
 import java.util.Date;
 

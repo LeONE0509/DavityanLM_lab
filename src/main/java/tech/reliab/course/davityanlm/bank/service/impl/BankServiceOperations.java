@@ -1,7 +1,7 @@
-package tech.reliab.course.davityanlm.bank.service;
+package tech.reliab.course.davityanlm.bank.service.impl;
 
 import tech.reliab.course.davityanlm.bank.entity.Bank;
-import tech.reliab.course.davityanlm.bank.service.impl.BankService;
+import tech.reliab.course.davityanlm.bank.service.BankService;
 
 public class BankServiceOperations implements BankService {
 
