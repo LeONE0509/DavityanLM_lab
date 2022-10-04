@@ -2,13 +2,13 @@ package tech.reliab.course.davityanlm.bank.entity;
 
 import tech.reliab.course.davityanlm.bank.service.impl.UserServiceOperations;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Random;
 
 public class User extends UserServiceOperations {
     private Integer id;
     private String fullName;
-    private Date birthDate;
+    private LocalDate birthDate;
     private String workPlace;
     private Integer monthIncome;
     private Bank bank;
@@ -16,7 +16,7 @@ public class User extends UserServiceOperations {
     private PaymentAccount paymentAccount;
     private Integer creditRate;
 
-    public User(Integer id, String fullName, Date birthDate, String workPlace ,Bank bank){
+    public User(Integer id, String fullName, LocalDate birthDate, String workPlace ,Bank bank){
         setId(id);
         setFullName(fullName);
         setBirthDate(birthDate);
@@ -78,7 +78,7 @@ public class User extends UserServiceOperations {
         return this.fullName;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return this.birthDate;
     }
 
@@ -115,7 +115,7 @@ public class User extends UserServiceOperations {
     }
 
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

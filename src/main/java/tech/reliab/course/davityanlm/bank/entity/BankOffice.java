@@ -4,8 +4,8 @@ import tech.reliab.course.davityanlm.bank.service.impl.BankOfficeServiceOperatio
 
 public class BankOffice extends BankOfficeServiceOperations {
     private Integer id;
-    protected String name;
-    protected String address;
+    private String name;
+    private String address;
     private Boolean activityStatus;
     private Boolean mayToLocateAtmStatus;
     private Integer atmQty;

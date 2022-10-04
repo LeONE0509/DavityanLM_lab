@@ -2,14 +2,14 @@ package tech.reliab.course.davityanlm.bank.entity;
 
 import tech.reliab.course.davityanlm.bank.service.impl.CreditAccountServiceOperations;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class CreditAccount extends CreditAccountServiceOperations {
     private Integer id;
     private User user;
     private Bank bank;
-    private Date startCreditDate;
-    private Date finishCreditDate;
+    private LocalDate startCreditDate;
+    private LocalDate finishCreditDate;
     private Integer creditMonthQty;
     private Integer creditSum;
     private Integer creditMonthPayment;
@@ -21,8 +21,8 @@ public class CreditAccount extends CreditAccountServiceOperations {
         setId(id);
         setUser(user);
         setBank(bank);
-        setStartCreditDate(new Date());
-        setFinishCreditDate(new Date());
+        setStartCreditDate(LocalDate.of(1, 1, 1));
+        setFinishCreditDate(LocalDate.of(1,1,1));
         setCreditMonthQty(0);
         setCreditSum(0);
         setCreditMonthPayment(0);
@@ -60,11 +60,11 @@ public class CreditAccount extends CreditAccountServiceOperations {
         return this.bank;
     }
 
-    public Date getStartCreditDate(){
+    public LocalDate getStartCreditDate(){
         return this.startCreditDate;
     }
 
-    public Date getFinishCreditDate(){
+    public LocalDate getFinishCreditDate(){
         return this.finishCreditDate;
     }
 
@@ -104,11 +104,11 @@ public class CreditAccount extends CreditAccountServiceOperations {
         this.bank = bank;
     }
 
-    public void setStartCreditDate(Date startCreditDate) {
+    public void setStartCreditDate(LocalDate startCreditDate) {
         this.startCreditDate = startCreditDate;
     }
 
-    public void setFinishCreditDate(Date finishCreditDate) {
+    public void setFinishCreditDate(LocalDate finishCreditDate) {
         this.finishCreditDate = finishCreditDate;
     }
 

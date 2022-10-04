@@ -15,8 +15,8 @@ public class BankAtm extends AtmServiceOperations{
     private Status status;
     public enum Status{
         WORKING("Работает"),
-        OUTOFSERVICE("Не работает"),
-        OUTOFMONEY("Нет денег");
+        OUT_OF_SERVICE("Не работает"),
+        OUT_OF_MONEY("Нет денег");
 
         private String title;
 
@@ -37,14 +37,14 @@ public class BankAtm extends AtmServiceOperations{
     public BankAtm(Integer id, String name, Bank bank, BankOffice bankOffice, Employee employee){
         setId(id);
         setName(name);
-        setAddress(bankOffice.address);
+        setAddress(bankOffice.getAddress());
         setBank(bank);
         setEmployee(employee);
         setCashOutStatus(false);
         setCashIntStatus(false);
         setMoneyQtyInAtm(0);
         setServiceCost(0);
-        setStatus(Status.OUTOFSERVICE);
+        setStatus(Status.OUT_OF_SERVICE);
     }
 
     @Override

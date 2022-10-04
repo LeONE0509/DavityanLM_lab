@@ -5,8 +5,8 @@ import tech.reliab.course.davityanlm.bank.service.AtmService;
 
 public class AtmServiceOperations implements AtmService {
 
-    @Override
     public void addMoney(BankAtm bankAtm, Integer moneyQty){
+
         if (moneyQty > bankAtm.getBank().getMoneyQty()){
             System.out.println("Невозможно поместить в банкомат сумму превышающую кол-во всех денег в банке");
             return;
@@ -18,15 +18,7 @@ public class AtmServiceOperations implements AtmService {
         bankAtm.setMoneyQtyInAtm(bankAtm.getMoneyQtyInAtm() + moneyQty);
     }
 
-    @Override
-    public void delete(BankAtm bankAtm) {
-        bankAtm.setId(null);
-        bankAtm.setStatus(BankAtm.Status.OUTOFSERVICE);
-        bankAtm.setBank(null);
-        bankAtm.setMoneyQtyInAtm(null);
-        bankAtm.setCashOutStatus(null);
-        bankAtm.setCashIntStatus(null);
-        bankAtm = null;
-
+    public BankAtm delete() {
+        return null;
     }
 }

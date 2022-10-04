@@ -3,12 +3,12 @@ package tech.reliab.course.davityanlm.bank.entity;
 
 import tech.reliab.course.davityanlm.bank.service.impl.EmployeeServiceOperations;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Employee extends EmployeeServiceOperations {
     private Integer id;
-    protected String fullName;
-    private Date birthDate;
+    private String fullName;
+    private LocalDate birthDate;
     private String post;
     private Bank bank;
     private Boolean onlineOrNot;
@@ -16,7 +16,7 @@ public class Employee extends EmployeeServiceOperations {
     private Boolean mayToGiveCredit;
     private Integer salary;
 
-    public Employee(Integer id, String fullName, Date birthDate, Bank bank, BankOffice bankOffice,
+    public Employee(Integer id, String fullName, LocalDate birthDate, Bank bank, BankOffice bankOffice,
                     String post){
 
         setId(id);
@@ -32,6 +32,7 @@ public class Employee extends EmployeeServiceOperations {
 
     @Override
     public String toString(){
+
         if (getId() == null){
             return "\nСотрудник{" +
                     "\nКажется данного сотрудника уволили" +
@@ -62,7 +63,7 @@ public class Employee extends EmployeeServiceOperations {
         return this.fullName;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return this.birthDate;
     }
 
@@ -98,7 +99,7 @@ public class Employee extends EmployeeServiceOperations {
         this.fullName = fullName;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

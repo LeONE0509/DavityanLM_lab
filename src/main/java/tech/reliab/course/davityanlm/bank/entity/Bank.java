@@ -4,7 +4,7 @@ import tech.reliab.course.davityanlm.bank.service.impl.BankServiceOperations;
 
 import java.util.Random;
 
-public class Bank extends BankServiceOperations {
+public class Bank extends BankServiceOperations  {
     private Integer id;
     private String name;
     private Integer officeQty;

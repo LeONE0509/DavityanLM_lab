@@ -9,19 +9,8 @@ public class CreditAccountServiceOperations implements CreditAccountService {
         creditAccount.setCreditSum(creditAccount.getCreditSum() - sum);
     }
 
-    public void delete(CreditAccount creditAccount) {
-        creditAccount.setId(null);
-        creditAccount.setUser(null);
-        creditAccount.setBank(null);
-        creditAccount.setStartCreditDate(null);
-        creditAccount.setFinishCreditDate(null);
-        creditAccount.setCreditMonthQty(null);
-        creditAccount.setCreditSum(null);
-        creditAccount.setCreditMonthPayment(null);
-        creditAccount.setPercent(null);
-        creditAccount.setEmployee(null);
-        creditAccount.setPaymentAccount(null);
-        creditAccount = null;
+    public CreditAccount delete() {
+        return null;
     }
 
 }

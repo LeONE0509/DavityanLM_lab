@@ -7,6 +7,7 @@ public class BankServiceOperations implements BankService {
 
     @Override
     public void addAtm(Bank bank) {
+
         bank.setAtmQty(bank.getAtmQty() + 1);
     }
 
@@ -26,16 +27,7 @@ public class BankServiceOperations implements BankService {
     }
 
     @Override
-    public void delete(Bank bank) {
-        bank.setId(null);
-        bank.setName(null);
-        bank.setOfficeQty(null);
-        bank.setAtmQty(null);
-        bank.setEmployeeQty(null);
-        bank.setClientQty(null);
-        bank.setRate(null);
-        bank.setMoneyQty(null);
-        bank.setPercent(null);
-        bank = null;
+    public Bank delete() {
+        return null;
     }
 }
