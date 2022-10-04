@@ -17,7 +17,7 @@ public class PaymentServiceOperations implements PaymentAccountService {
         paymentAccount.setCurrentSum(paymentAccount.getCurrentSum() - moneyQty);
     }
 
-    public PaymentAccount delete() {
-        return null;
+    public void delete(PaymentAccount paymentAccount) {
+        paymentAccount = null;
     }
 }

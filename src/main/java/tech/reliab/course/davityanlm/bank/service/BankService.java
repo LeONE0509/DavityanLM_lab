@@ -8,7 +8,7 @@ public interface BankService {
     void addOffice(Bank bank);
     void addEmployee(Bank bank);
     void addClient(Bank bank);
-    Bank delete();
+    void delete(Bank bank);
 
 
 }

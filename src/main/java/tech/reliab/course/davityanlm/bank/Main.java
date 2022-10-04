@@ -1,6 +1,7 @@
 package tech.reliab.course.davityanlm.bank;
 
 import tech.reliab.course.davityanlm.bank.entity.*;
+import tech.reliab.course.davityanlm.bank.service.impl.*;
 
 import java.time.LocalDate;
 
@@ -8,66 +9,78 @@ public class Main {
     public static void main(String[] args) {
 
         Bank bank = new Bank(1, "myBank");
-        bank.addOffice(bank);
-        bank.addAtm(bank);
-        bank.addClient(bank);
-        bank.addEmployee(bank);
+        BankOffice bankOffice = new BankOffice(1, "Отделение №1", "улица Пушкина дом Колотушкина");
+        Employee employee = new Employee(1, "Вечность Лев", LocalDate.of(2000, 9, 5), bank, bankOffice, "Генеральный");
+        BankAtm bankAtm = new BankAtm(1, "Samsung", bank, bankOffice, employee);
+        User user = new User(1, "Вечность Лев", LocalDate.of(2000,9,5), "LevBank228", bank);
+        PaymentAccount paymentAccount = new PaymentAccount(1, user, bank);
+        CreditAccount creditAccount = new CreditAccount(1, user, bank, employee, paymentAccount);
+
+        BankServiceOperations bankServiceOperations  = new BankServiceOperations();
+        BankOfficeServiceOperations bankOfficeServiceOperations = new BankOfficeServiceOperations();
+        EmployeeServiceOperations employeeServiceOperations = new EmployeeServiceOperations();
+        AtmServiceOperations atmServiceOperations = new AtmServiceOperations();
+        UserServiceOperations userServiceOperations = new UserServiceOperations();
+        PaymentServiceOperations paymentServiceOperations = new PaymentServiceOperations();
+        CreditAccountServiceOperations creditAccountServiceOperations = new CreditAccountServiceOperations();
+
+
+        bankServiceOperations.addOffice(bank);
+        bankServiceOperations.addClient(bank);
+        bankServiceOperations.addEmployee(bank);
+        bankServiceOperations.addAtm(bank);
         System.out.println(bank);
 
-        BankOffice bankOffice = new BankOffice(1, "Отделение №1", "улица Пушкина дом Колотушкина");
-        bankOffice.addAtm(bankOffice);
+
+        bankOfficeServiceOperations.addAtm(bankOffice);
         System.out.println(bankOffice);
 
-        Employee employee = new Employee(1, "Вечность Лев", LocalDate.of(2000, 9, 5), bank, bankOffice, "Генеральный");
-        employee.setSalary(228322);
+
+        employeeServiceOperations.addSalary(employee, 228322);
         System.out.println(employee);
 
-        BankAtm bankAtm = new BankAtm(1, "Samsung", bank, bankOffice, employee);
-        bankAtm.addMoney(bankAtm, 228322);
+        atmServiceOperations.addMoney(bankAtm, 228322);
         System.out.println(bankAtm);
 
-        User user = new User(1, "Вечность Лев", LocalDate.of(2000,9,5), "LevBank228", bank);
-
-        PaymentAccount paymentAccount = new PaymentAccount(1, user, bank);
-        paymentAccount.addMoney(paymentAccount, 228322);
+        paymentServiceOperations.addMoney(paymentAccount, 228322);
         System.out.println(paymentAccount);
 
-        CreditAccount creditAccount = new CreditAccount(1, user, bank, employee, paymentAccount);
-        creditAccount.setCreditSum(1337);
+
+        creditAccountServiceOperations.subCreditSum(creditAccount, 0);
         System.out.println(creditAccount);
 
-        user.setPaymentAccount(paymentAccount);
-        user.setCreditAccount(creditAccount);
+
+        userServiceOperations.changeWorkPlace(user, "BSTU");
         System.out.println(user);
 
         System.out.print("\nУдаление:");
 
         System.out.print("\nБанк: ");
-        bank = bank.delete();
+        bankServiceOperations.delete(bank);
         System.out.print(bank);
 
         System.out.print("\nБанковский офис: ");
-        bankOffice = bankOffice.delete();
+        bankOfficeServiceOperations.delete(bankOffice);
         System.out.print(bankOffice);
 
         System.out.print("\nАТМ: ");
-        bankAtm = bankAtm.delete();
+        atmServiceOperations.delete(bankAtm);
         System.out.print(bankAtm);
 
         System.out.print("\nСотрудник: ");
-        employee = employee.delete();
+        employeeServiceOperations.delete(employee);
         System.out.print(employee);
 
         System.out.print("\nКредитный аккаунт: ");
-        creditAccount = creditAccount.delete();
+        creditAccountServiceOperations.delete(creditAccount);
         System.out.print(creditAccount);
 
         System.out.print("\nПлатежный аккаунт: ");
-        paymentAccount = paymentAccount.delete();
+        paymentServiceOperations.delete(paymentAccount);
         System.out.print(paymentAccount);
 
         System.out.print("\nПользователь: ");
-        user = user.delete();
+        userServiceOperations.delete(user);
         System.out.print(user);
 
     }

@@ -7,7 +7,6 @@ public class BankServiceOperations implements BankService {
 
     @Override
     public void addAtm(Bank bank) {
-
         bank.setAtmQty(bank.getAtmQty() + 1);
     }
 
@@ -27,7 +26,7 @@ public class BankServiceOperations implements BankService {
     }
 
     @Override
-    public Bank delete() {
-        return null;
+    public void delete(Bank bank) {
+        bank = null;
     }
 }

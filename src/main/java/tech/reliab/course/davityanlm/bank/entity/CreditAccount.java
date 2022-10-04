@@ -1,10 +1,8 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
-import tech.reliab.course.davityanlm.bank.service.impl.CreditAccountServiceOperations;
-
 import java.time.LocalDate;
 
-public class CreditAccount extends CreditAccountServiceOperations {
+public class CreditAccount {
     private Integer id;
     private User user;
     private Bank bank;

@@ -1,8 +1,6 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
-import tech.reliab.course.davityanlm.bank.service.impl.BankOfficeServiceOperations;
-
-public class BankOffice extends BankOfficeServiceOperations {
+public class BankOffice{
     private Integer id;
     private String name;
     private String address;

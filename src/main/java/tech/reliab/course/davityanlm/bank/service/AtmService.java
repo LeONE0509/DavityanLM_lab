@@ -6,6 +6,6 @@ public interface AtmService {
 
     void addMoney(BankAtm bankAtm, Integer moneyQty);
 
-    BankAtm delete();
+    void delete(BankAtm bankAtm);
 
 }

@@ -6,5 +6,5 @@ public interface BankOfficeService {
 
     void addAtm(BankOffice bankOffice);
 
-    BankOffice delete();
+    void delete(BankOffice bankOffice);
 }

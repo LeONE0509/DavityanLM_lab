@@ -1,11 +1,9 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
-import tech.reliab.course.davityanlm.bank.service.impl.UserServiceOperations;
-
 import java.time.LocalDate;
 import java.util.Random;
 
-public class User extends UserServiceOperations {
+public class User {
     private Integer id;
     private String fullName;
     private LocalDate birthDate;

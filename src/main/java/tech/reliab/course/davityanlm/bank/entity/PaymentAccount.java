@@ -1,8 +1,6 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
-import tech.reliab.course.davityanlm.bank.service.impl.PaymentServiceOperations;
-
-public class PaymentAccount extends PaymentServiceOperations {
+public class PaymentAccount {
     private Integer id;
     private User user;
     private Bank bank;

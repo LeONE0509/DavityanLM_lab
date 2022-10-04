@@ -4,7 +4,7 @@ import tech.reliab.course.davityanlm.bank.entity.Employee;
 
 public interface EmployeeService {
 
-
-    Employee delete();
+    void addSalary(Employee employee, Integer salary);
+    void delete(Employee employee);
 
 }

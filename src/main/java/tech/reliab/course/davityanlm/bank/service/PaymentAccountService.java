@@ -8,5 +8,5 @@ public interface PaymentAccountService {
 
     void subMoney(PaymentAccount paymentAccount,Integer moneyQty);
 
-    PaymentAccount delete();
+    void delete(PaymentAccount paymentAccount);
 }

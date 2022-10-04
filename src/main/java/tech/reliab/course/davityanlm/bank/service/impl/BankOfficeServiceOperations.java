@@ -9,7 +9,7 @@ public class BankOfficeServiceOperations implements BankOfficeService {
         bankOffice.setAtmQty(bankOffice.getAtmQty() + 1);
     }
 
-    public BankOffice delete(){
-        return null;
+    public void delete(BankOffice bankOffice){
+        bankOffice = null;
     }
 }

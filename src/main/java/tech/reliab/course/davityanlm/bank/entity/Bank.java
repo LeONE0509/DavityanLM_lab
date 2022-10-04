@@ -1,10 +1,8 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
-import tech.reliab.course.davityanlm.bank.service.impl.BankServiceOperations;
-
 import java.util.Random;
 
-public class Bank extends BankServiceOperations  {
+public class Bank  {
     private Integer id;
     private String name;
     private Integer officeQty;

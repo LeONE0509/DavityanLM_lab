@@ -1,11 +1,8 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
-
-import tech.reliab.course.davityanlm.bank.service.impl.EmployeeServiceOperations;
-
 import java.time.LocalDate;
 
-public class Employee extends EmployeeServiceOperations {
+public class Employee {
     private Integer id;
     private String fullName;
     private LocalDate birthDate;
