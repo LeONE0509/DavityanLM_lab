@@ -3,7 +3,6 @@ package tech.reliab.course.davityanlm.bank.service.impl;
 import tech.reliab.course.davityanlm.bank.entity.Bank;
 import tech.reliab.course.davityanlm.bank.service.BankService;
 
-
 /** Класс-реализация операций банка, реализует интерфейс банковского сервиса {@link BankService}. <br>
  * Реализуется бизнес-логика */
 public class BankServiceOperations implements BankService {
