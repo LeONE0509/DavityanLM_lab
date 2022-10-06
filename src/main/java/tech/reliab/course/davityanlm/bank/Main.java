@@ -11,26 +11,25 @@ public class Main {
     public static void main(String[] args) {
 
         Bank bank = new Bank(1, "myBank");
-        BankService bankService = BankServiceOperations.getObj();
-        if (bankService != null) {
-            bankService.addOffice(bank);
-            bankService.addClient(bank);
-            bankService.addEmployee(bank);
-            bankService.addAtm(bank);
-        }
+        BankService bankService = BankServiceOperations.BANK_SERVICE;
+
+        bankService.addOffice(bank);
+        bankService.addClient(bank);
+        bankService.addEmployee(bank);
+        bankService.addAtm(bank);
         System.out.println(bank);
 
         BankOffice bankOffice = new BankOffice(1, "Отделение №1", "улица Пушкина дом Колотушкина");
-        BankOfficeService bankOfficeService = new BankOfficeServiceOperations();
+        BankOfficeService bankOfficeService = BankOfficeServiceOperations.BANK_OFFICE_SERVICE;
         bankOfficeService.addAtm(bankOffice);
         System.out.println(bankOffice);
 
         Employee employee = new Employee(1, "Вечность Лев", LocalDate.of(2000, 9, 5), bank, bankOffice, "Генеральный");
-        EmployeeService employeeService = new EmployeeServiceOperations();
+        EmployeeService employeeService = EmployeeServiceOperations.EMPLOYEE_SERVICE;
         employeeService.addSalary(employee, 228322);
         System.out.println(employee);
 
-        AtmService atmService = new AtmServiceOperations();
+        AtmService atmService = AtmServiceOperations.ATM_SERVICE;
         BankAtm bankAtm = new BankAtm(1, "Samsung", bank, bankOffice, employee);
         atmService.addMoney(bankAtm, 228322);
         System.out.println(bankAtm);
@@ -38,16 +37,16 @@ public class Main {
         User user = new User(1, "Вечность Лев", LocalDate.of(2000,9,5), "LevBank228", bank);
 
         PaymentAccount paymentAccount = new PaymentAccount(1, user, bank);
-        PaymentAccountService paymentService = new PaymentServiceOperations();
+        PaymentAccountService paymentService = PaymentServiceOperations.PAYMENT_ACCOUNT_SERVICE;
         paymentService.addMoney(paymentAccount, 228322);
         System.out.println(paymentAccount);
 
         CreditAccount creditAccount = new CreditAccount(1, user, bank, employee, paymentAccount);
-        CreditAccountService creditAccountService = new CreditAccountServiceOperations();
+        CreditAccountService creditAccountService = CreditAccountServiceOperations.CREDIT_ACCOUNT_SERVICE;
         creditAccountService.subCreditSum(creditAccount, 0);
         System.out.println(creditAccount);
 
-        UserService userService = new UserServiceOperations();
+        UserService userService = UserServiceOperations.USER_SERVICE;
         userService.changeWorkPlace(user, "БГТУ");
         System.out.println(user);
 

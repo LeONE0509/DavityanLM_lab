@@ -7,6 +7,10 @@ import tech.reliab.course.davityanlm.bank.service.BankOfficeService;
  * <br> Реализуется бизнес-логика*/
 public class BankOfficeServiceOperations implements BankOfficeService {
 
+    private BankOfficeServiceOperations(){}
+
+    public static final BankOfficeService BANK_OFFICE_SERVICE= new BankOfficeServiceOperations();
+
     public void addAtm(BankOffice bankOffice) {
         bankOffice.setAtmQty(bankOffice.getAtmQty() + 1);
     }

@@ -7,6 +7,10 @@ import tech.reliab.course.davityanlm.bank.service.AtmService;
  * Реализуется бизнес-логика */
 public class AtmServiceOperations implements AtmService {
 
+    private AtmServiceOperations(){}
+
+    public static final AtmService ATM_SERVICE = new AtmServiceOperations();
+
     public void addMoney(BankAtm bankAtm, Integer moneyQty){
 
         if (moneyQty > bankAtm.getBank().getMoneyQty()){

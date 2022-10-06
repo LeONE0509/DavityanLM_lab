@@ -7,6 +7,10 @@ import tech.reliab.course.davityanlm.bank.service.PaymentAccountService;
  * Реализуется бизнес-логика*/
 public class PaymentServiceOperations implements PaymentAccountService {
 
+    private PaymentServiceOperations(){}
+
+    public static final PaymentAccountService PAYMENT_ACCOUNT_SERVICE = new PaymentServiceOperations();
+
     public void addMoney(PaymentAccount paymentAccount, Integer moneyQty) {
         paymentAccount.setCurrentSum(paymentAccount.getCurrentSum() + moneyQty);
     }
