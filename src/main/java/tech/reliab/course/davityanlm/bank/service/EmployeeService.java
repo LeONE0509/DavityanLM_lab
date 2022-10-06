@@ -11,9 +11,4 @@ public interface EmployeeService {
      * @param salary сумма, которую необходимо добавить к зарплате */
     void addSalary(Employee employee, Integer salary);
 
-    /** Процедура удаления сотрудника. <br>
-     * Объекту присваивается значение <b>null</b>
-     * @param employee сотрудник, которого следует удалить */
-    void delete(Employee employee);
-
 }

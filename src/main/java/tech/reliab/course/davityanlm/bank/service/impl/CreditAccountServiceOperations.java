@@ -11,8 +11,4 @@ public class CreditAccountServiceOperations implements CreditAccountService {
         creditAccount.setCreditSum(creditAccount.getCreditSum() - sum);
     }
 
-    public void delete(CreditAccount creditAccount) {
-        creditAccount = null;
-    }
-
 }

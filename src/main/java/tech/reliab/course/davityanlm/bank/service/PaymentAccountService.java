@@ -16,8 +16,4 @@ public interface PaymentAccountService {
      * @param moneyQty сумма, которую необходимо вычесть */
     void subMoney(PaymentAccount paymentAccount,Integer moneyQty);
 
-    /** Процедура удаления платежного счета. <br>
-     * Объекту присваивается значение <b>null</b>
-     * @param paymentAccount платежный счет, который следует удалить */
-    void delete(PaymentAccount paymentAccount);
 }

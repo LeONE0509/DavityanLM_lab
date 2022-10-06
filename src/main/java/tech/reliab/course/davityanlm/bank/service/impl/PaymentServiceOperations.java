@@ -18,8 +18,4 @@ public class PaymentServiceOperations implements PaymentAccountService {
         }
         paymentAccount.setCurrentSum(paymentAccount.getCurrentSum() - moneyQty);
     }
-
-    public void delete(PaymentAccount paymentAccount) {
-        paymentAccount = null;
-    }
 }

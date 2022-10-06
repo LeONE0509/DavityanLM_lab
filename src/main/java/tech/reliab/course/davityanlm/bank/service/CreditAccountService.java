@@ -11,8 +11,4 @@ public interface CreditAccountService {
      * @param sum сумма, которую необходимо вычесть. */
     void subCreditSum(CreditAccount creditAccount, Integer sum);
 
-    /** Процедура удаления кредитного счета. <br>
-     *  Объекту присваивается значение <b>null</b>
-     *  @param creditAccount кредитный счет, который следует удалить. */
-    void delete(CreditAccount creditAccount);
 }

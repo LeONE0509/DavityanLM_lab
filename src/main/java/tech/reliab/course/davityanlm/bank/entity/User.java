@@ -80,6 +80,7 @@ public class User {
                 "\nФИО: " + getFullName() +
                 ",\nДата рождения: " + getBirthDate() +
                 ",\nМесто работы: " + getWorkPlace() +
+                ",\nБанк: " + getBank().getName() +
                 ",\nМесячный доход: " + getMonthIncome() +
                 ",\nКредитный рейтинг: " + getCreditRate();
 
@@ -202,4 +203,5 @@ public class User {
     public void setCreditRate(Integer creditRate) {
         this.creditRate = creditRate;
     }
+
 }

@@ -26,10 +26,4 @@ public interface BankService {
      * @param bank банк, к которому следует добавить клиента*/
     void addClient(Bank bank);
 
-    /** Процедура удаления банка. <br>
-     * Объекту присваивается значение <b>null</b>
-     * @param bank банк, который следует удалить */
-    void delete(Bank bank);
-
-
 }

@@ -11,7 +11,4 @@ public class EmployeeServiceOperations implements EmployeeService {
       employee.setSalary(employee.getSalary() + sum);
     }
 
-    public void delete(Employee employee) {
-     employee = null;
-}
 }

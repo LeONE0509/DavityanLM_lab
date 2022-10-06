@@ -19,8 +19,4 @@ public class AtmServiceOperations implements AtmService {
         }
         bankAtm.setMoneyQtyInAtm(bankAtm.getMoneyQtyInAtm() + moneyQty);
     }
-
-    public void delete(BankAtm bankAtm) {
-        bankAtm = null;
-    }
 }

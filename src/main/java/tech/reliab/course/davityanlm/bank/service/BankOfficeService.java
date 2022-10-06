@@ -11,8 +11,4 @@ public interface BankOfficeService {
      * @param bankOffice банковский офис, к которому следует добавить банкомат*/
     void addAtm(BankOffice bankOffice);
 
-    /** Процедура удаления банковского офиса. <br>
-     * Объекту присваивается значение <b>null</b>
-     * @param bankOffice банковский офис, который следует удалить. */
-    void delete(BankOffice bankOffice);
 }
