@@ -4,7 +4,7 @@ import tech.reliab.course.davityanlm.bank.entity.Bank;
 import tech.reliab.course.davityanlm.bank.service.BankService;
 
 /** Класс-реализация операций банка, реализует интерфейс банковского сервиса {@link BankService}. <br>
- * Реализуется бизнес-логика. Такой класс должен быть в единственном экземпляре. Singleton*/
+ * Реализуется бизнес-логика. Singleton*/
 public class BankServiceOperations implements BankService {
 
     private BankServiceOperations(){}

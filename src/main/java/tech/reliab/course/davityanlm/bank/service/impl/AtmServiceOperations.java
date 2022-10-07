@@ -4,7 +4,7 @@ import tech.reliab.course.davityanlm.bank.entity.BankAtm;
 import tech.reliab.course.davityanlm.bank.service.AtmService;
 
 /** Класс-реализация операция с банкоматом, реализует интерфейс сервиса банкомата {@link AtmService}. <br>
- * Реализуется бизнес-логика */
+ * Реализуется бизнес-логика. Singleton */
 public class AtmServiceOperations implements AtmService {
 
     private AtmServiceOperations(){}

@@ -4,7 +4,7 @@ import tech.reliab.course.davityanlm.bank.entity.PaymentAccount;
 import tech.reliab.course.davityanlm.bank.service.PaymentAccountService;
 
 /** Класс-реализация операций платежного счета, реализует интерфейс платежного счета {@link PaymentAccountService} <br>
- * Реализуется бизнес-логика*/
+ * Реализуется бизнес-логика. Singleton*/
 public class PaymentServiceOperations implements PaymentAccountService {
 
     private PaymentServiceOperations(){}

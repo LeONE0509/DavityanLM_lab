@@ -4,7 +4,7 @@ import tech.reliab.course.davityanlm.bank.entity.Employee;
 import tech.reliab.course.davityanlm.bank.service.EmployeeService;
 
 /** Класс-реализация операций сотрудника, реализует интерфейс сотрудника {@link EmployeeService} <br>
- * Реализуется бизнес-логика*/
+ * Реализуется бизнес-логика. Singleton*/
 public class EmployeeServiceOperations implements EmployeeService {
 
     private EmployeeServiceOperations(){}
