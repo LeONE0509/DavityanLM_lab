@@ -6,7 +6,7 @@ import tech.reliab.course.davityanlm.bank.service.impl.*;
 
 import java.time.LocalDate;
 
-/** @author Лев Давитян */
+/** @author Лев Вечность */
 public class Main {
     public static void main(String[] args) {
 
