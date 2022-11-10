@@ -7,6 +7,7 @@ import tech.reliab.course.davityanlm.bank.service.BankOfficeService;
  * <br> Реализуется бизнес-логика. Singleton*/
 public class BankOfficeServiceOperations implements BankOfficeService {
 
+    /** Закрытый конструктор, для реализации Singleton */
     private BankOfficeServiceOperations(){}
 
     public static final BankOfficeService BANK_OFFICE_SERVICE= new BankOfficeServiceOperations();
