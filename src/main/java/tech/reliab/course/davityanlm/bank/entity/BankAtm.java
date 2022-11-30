@@ -1,6 +1,7 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
-/** Класс-модель банкомат со свойствами: <br> <b>{@link BankAtm#id}</b>, <br> <b>{@link BankAtm#name}</b>,
+/** Класс-модель банкомат со свойствами: <br> <b>{@link BankAtm#id}</b>,
+ * <br> <b>{@link BankAtm#name}</b>, <br> <b>{@link BankAtm#bankOfficeId}</b>,
  *  <br> <b>{@link BankAtm#address}</b>, <br> <b>{@link BankAtm#bank}</b>, <br> <b>{@link BankAtm#employee}</b>,
  *   <br> <b>{@link BankAtm#cashOutStatus}</b>,  <br> <b>{@link BankAtm#cashInStatus}</b>,
  *   <br> <b>{@link BankAtm#moneyQtyInAtm}</b>, <br> <b>{@link BankAtm#status}</b>
@@ -9,6 +10,9 @@ public class BankAtm {
 
     /** Поле идентификатор */
     private Integer id;
+
+    /** Поле идентификатор офиса, которому принадлежит банкомат */
+    private Integer bankOfficeId;
 
     /** Поле название банкомата*/
     private String name;
@@ -54,16 +58,11 @@ public class BankAtm {
         OUT_OF_MONEY("Нет денег");
 
         /** Поле название статуса */
-        private String title;
+        private final String title;
 
         /** Конструктор */
         Status(String title){
             this.title = title;
-        }
-
-        /** Функция для возврата поля {@link Status#title} */
-        public String getTitle(){
-            return title;
         }
 
         /** Перегруженная функция toString() <br>
@@ -75,17 +74,20 @@ public class BankAtm {
     }
 
     /** Конструктор для создания объекта класса */
-    public BankAtm(Integer id, String name, Bank bank, BankOffice bankOffice, Employee employee){
+    public BankAtm(Bank bank, BankOffice bankOffice, Integer id, String name, Employee employee,
+                   Boolean cashOutStatus, Boolean cashInStatus, Integer moneyQtyInAtm,
+                   Integer serviceCost, Status status){
+        setBank(bank);
+        setBankOfficeId(bankOffice.getId());
         setId(id);
         setName(name);
         setAddress(bankOffice.getAddress());
-        setBank(bank);
         setEmployee(employee);
-        setCashOutStatus(false);
-        setCashIntStatus(false);
-        setMoneyQtyInAtm(0);
-        setServiceCost(0);
-        setStatus(Status.OUT_OF_SERVICE);
+        setCashOutStatus(cashOutStatus);
+        setCashIntStatus(cashInStatus);
+        setMoneyQtyInAtm(moneyQtyInAtm);
+        setServiceCost(serviceCost);
+        setStatus(status);
     }
 
     /** Перегруженная функция toString() <br>
@@ -94,6 +96,7 @@ public class BankAtm {
     public String toString(){
         return "\nБанкомат{" +
                 "\nID Банкомата: " + getId() +
+                "\nID Офиса: " + getBankOfficeId() +
                 ",\nНазвание: " + getName() +
                 ",\nАдрес: " + getAddress() +
                 ",\nСтатус: " + getStatus().toString() +
@@ -110,6 +113,12 @@ public class BankAtm {
      * @return возвращает id номер банкомата */
     public Integer getId(){
         return this.id;
+    }
+
+    /** Функция получения значения поля {@link BankAtm#bankOfficeId}
+     * @return возвращает id номер банковского офиса, где стоит банкомат*/
+    public Integer getBankOfficeId(){
+        return this.bankOfficeId;
     }
 
     /** Функция получения значения поля {@link BankAtm#name}
@@ -172,6 +181,13 @@ public class BankAtm {
      * @param id идентификатор */
     public void setId(Integer id){
         this.id = id;
+    }
+
+    /** Процедура определения идентификатора банковского офиса,
+     * где стоит банкомат
+     * @param bankOfficeId id офиса*/
+    public void setBankOfficeId(Integer bankOfficeId) {
+        this.bankOfficeId = bankOfficeId;
     }
 
     /** Процедура определения названия банкомата {@link BankAtm#name}
