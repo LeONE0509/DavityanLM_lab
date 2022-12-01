@@ -20,8 +20,10 @@ public class CreditAccountServiceOperations implements CreditAccountService {
     public void createCreditAccount(Bank bank, User user, Employee employee, PaymentAccount paymentAccount,
                                     Integer id, LocalDate startCreditDate, LocalDate finishCreditDate,
                                     Integer creditMonthQty, Integer creditSum, Integer creditMonthPayment) {
-        creditAccounts.put(id, new CreditAccount(bank, user, employee, paymentAccount,
-                id, startCreditDate, finishCreditDate, creditMonthQty, creditSum, creditMonthPayment));
+        CreditAccount creditAccount = new CreditAccount(bank, user, employee, paymentAccount,
+                id, startCreditDate, finishCreditDate, creditMonthQty, creditSum, creditMonthPayment);
+        user.setCreditAccount(creditAccount);
+        creditAccounts.put(id, creditAccount);
     }
 
     @Override

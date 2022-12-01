@@ -88,8 +88,9 @@ public class Main {
         for (int i = 1; i <= QUANTITY_BANKS; i++){
             for (int j = 1; j <= QUANTITY_USERS_IN_ONE_BANK; j++){
                 userCounter++;
+                counter++;
                 for (int z = 1; z <= QUANTITY_PAYS_AND_CREDITS_IN_ONE_USER; z++){
-                    counter++;
+
                     paymentAccountService.createPaymentAccount(
                             bankService.getBank(i),
                             userService.getUser(userCounter),
@@ -123,7 +124,6 @@ public class Main {
             System.out.println("User" + i + "\n");
             System.out.println(userService.getUser(i));
             System.out.println("\n");
-            System.out.println("----------------------");
         }
 
     }
