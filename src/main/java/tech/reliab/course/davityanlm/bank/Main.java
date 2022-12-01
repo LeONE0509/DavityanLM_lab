@@ -3,6 +3,9 @@ package tech.reliab.course.davityanlm.bank;
 import tech.reliab.course.davityanlm.bank.entity.BankAtm;
 import tech.reliab.course.davityanlm.bank.service.*;
 import tech.reliab.course.davityanlm.bank.service.impl.*;
+
+import java.time.LocalDate;
+
 import static tech.reliab.course.davityanlm.bank.utils.Constants.*;
 
 /** @author Лев Вечность */
@@ -52,6 +55,27 @@ public class Main {
         }
 
         EmployeeService employeeService = EmployeeServiceOperations.EMPLOYEE_SERVICE;
+        counter = 0;
+        for (int i = 1; i <= QUANTITY_OFFICE; i++){
+            for (int j = 1; j <= QUANTITY_EMPLOYEES_ON_ONE_OFFICE; j++){
+                counter++;
+                employeeService.createEmployee(
+                        counter, "Employee N" + counter,
+                        LocalDate.of(2000, 1, 1),
+                        "post N" + counter,
+                        bankService.getBank(bankOfficeService.getBankOffice(i).getBankId()),
+                        true, bankOfficeService.getBankOffice(i),
+                        true, 0
+                );
+            }
+        }
+
+
+
+
+
+
+
 
 
 

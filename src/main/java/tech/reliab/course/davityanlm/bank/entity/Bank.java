@@ -61,7 +61,7 @@ public class Bank  {
                 ",\nНазвание: " + getName() +
                 ",\nКол-во офисов: " + getOfficeQty() +
                 ",\nКол-во банкоматов: " + getAtmQty() +
-                ",\nКол-во сотрудников: " + getClientQty() +
+                ",\nКол-во сотрудников: " + getEmployeeQty() +
                 ",\nКол-во клиентов: " + getClientQty() +
                 ",\nРейтинг: " + getRate() +
                 ",\nКол-во денег: " + getMoneyQty() +
