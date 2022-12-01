@@ -81,7 +81,21 @@ public class Main {
             }
         }
 
-
+        PaymentAccountService paymentAccountService = PaymentServiceOperations.PAYMENT_ACCOUNT_SERVICE;
+        counter = 0;
+        Integer userCounter = 0;
+        for (int i = 1; i <= QUANTITY_BANKS; i++){
+            for (int j = 1; j <= QUANTITY_USERS_IN_ONE_BANK; j++){
+                userCounter++;
+                for (int z = 1; z <= QUANTITY_PAYS_AND_CREDITS_IN_ONE_USER; z++){
+                    counter++;
+                    paymentAccountService.createPaymentAccount(
+                            bankService.getBank(i),
+                            userService.getUser(userCounter),
+                            counter, 0);
+                }
+            }
+        }
 
 
 
