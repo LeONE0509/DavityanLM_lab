@@ -22,7 +22,8 @@ public class Constants {
 
     public static final int QUANTITY_EMPLOYEES = QUANTITY_EMPLOYEES_ON_ONE_OFFICE * QUANTITY_OFFICE;
 
-
+    /** Общее кол-во счетов = кол-во счетов у одного пользователя * кол-во пользователей */
+    public static final int QUANTITY_PAYS_AND_CREDITS = QUANTITY_PAYS_AND_CREDITS_IN_ONE_USER * QUANTITY_USERS;
 
 
 }

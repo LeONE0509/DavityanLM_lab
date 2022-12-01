@@ -26,11 +26,13 @@ public class PaymentServiceOperations implements PaymentAccountService {
                 isUserAlreadyExist = true;
             }
         }
+
         if(!isUserAlreadyExist){
             bank.setClientQty(bank.getClientQty() + 1);
         }
+
         PaymentAccount paymentAccount = new PaymentAccount(bank, user, id, 0);
-        user.setPaymentAccount(paymentAccount);
+
         paymentAccounts.put(id, paymentAccount);
 
     }

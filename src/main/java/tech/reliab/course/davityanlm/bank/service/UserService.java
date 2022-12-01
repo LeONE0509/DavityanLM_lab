@@ -8,6 +8,9 @@ import java.time.LocalDate;
  * @version 0.1 */
 public interface UserService {
 
+    /** Процедура получения полной информации о клиенте
+     * @param id идентификатор клиента */
+    void getAllInformation(Integer id);
 
     /** Процедура создания экземпляра {@link User} */
     void createUser (Integer id, String fullName, LocalDate birthDate, String workPlace);
