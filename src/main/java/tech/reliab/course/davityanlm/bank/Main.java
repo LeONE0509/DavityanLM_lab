@@ -5,19 +5,18 @@ import tech.reliab.course.davityanlm.bank.service.*;
 import tech.reliab.course.davityanlm.bank.service.impl.*;
 import static tech.reliab.course.davityanlm.bank.utils.Constants.*;
 
-
 /** @author Лев Вечность */
 public class Main {
     public static void main(String[] args) {
 
         BankService bankService = BankServiceOperations.BANK_SERVICE;
-        for (int i = 0; i <= QUANTITY_BANKS; i++){
+        for (int i = 1; i <= QUANTITY_BANKS; i++){
             bankService.createBank(i, "bank N" + i);
         }
 
         BankOfficeService bankOfficeService = BankOfficeServiceOperations.BANK_OFFICE_SERVICE;
         Integer counter = 0;
-        for (int i = 0; i <= QUANTITY_BANKS; i++){
+        for (int i = 1; i <= QUANTITY_BANKS; i++){
             for (int j = 1; j <= QUANTITY_OFFICES_IN_ONE_BANK; j++){
                 counter++;
                 bankOfficeService.createOffice(
@@ -36,8 +35,8 @@ public class Main {
 
         AtmService atmService = AtmServiceOperations.ATM_SERVICE;
         counter = 0;
-        for (int i = 0; i <= QUANTITY_OFFICE; i++){
-            for (int j = 0; j <= QUANTITY_ATMS_IN_ONE_OFFICE; j++){
+        for (int i = 1; i <= QUANTITY_OFFICE; i++){
+            for (int j = 1; j <= QUANTITY_ATMS_IN_ONE_OFFICE; j++){
                 counter++;
                 atmService.createATM(
                         bankService.getBank(bankOfficeService.getBankOffice(i).getBankId()),
@@ -50,6 +49,19 @@ public class Main {
                         BankAtm.Status.WORKING
                 );
             }
+        }
+
+        EmployeeService employeeService = EmployeeServiceOperations.EMPLOYEE_SERVICE;
+
+
+
+
+        for (int i = 1; i <= QUANTITY_BANKS; i++){
+            System.out.println("----------------------");
+            System.out.println("Bank" + i + "\n");
+            System.out.println(bankService.getBank(i));
+            System.out.println("\n");
+            System.out.println("----------------------");
         }
 
     }
