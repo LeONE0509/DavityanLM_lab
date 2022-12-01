@@ -1,5 +1,6 @@
 package tech.reliab.course.davityanlm.bank;
 
+import tech.reliab.course.davityanlm.bank.entity.BankAtm;
 import tech.reliab.course.davityanlm.bank.service.*;
 import tech.reliab.course.davityanlm.bank.service.impl.*;
 import static tech.reliab.course.davityanlm.bank.utils.Constants.*;
@@ -32,5 +33,47 @@ public class Main {
                 );
             }
         }
+
+        AtmService atmService = AtmServiceOperations.ATM_SERVICE;
+        counter = 0;
+        for (int i = 0; i <= QUANTITY_OFFICE; i++){
+            for (int j = 0; j <= QUANTITY_ATMS_IN_ONE_OFFICE; j++){
+                counter++;
+                atmService.createATM(
+                        bankService.getBank(bankOfficeService.getBankOffice(i).getBankId()),
+                        bankOfficeService.getBankOffice(i),
+                        counter,
+                        "ATM N" + counter,
+                        counter,
+                        true, true,
+                        0, 0,
+                        BankAtm.Status.WORKING
+                );
+            }
+        }
+
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

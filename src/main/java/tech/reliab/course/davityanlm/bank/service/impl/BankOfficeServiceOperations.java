@@ -27,6 +27,11 @@ public class BankOfficeServiceOperations implements BankOfficeService {
 
     }
 
+    @Override
+    public BankOffice getBankOffice(Integer id) {
+        return offices.get(id);
+    }
+
     public void addAtm(BankOffice bankOffice) {
         bankOffice.setAtmQty(bankOffice.getAtmQty() + 1);
     }

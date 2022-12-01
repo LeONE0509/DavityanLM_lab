@@ -2,7 +2,7 @@ package tech.reliab.course.davityanlm.bank.entity;
 
 /** Класс-модель банкомат со свойствами: <br> <b>{@link BankAtm#id}</b>,
  * <br> <b>{@link BankAtm#name}</b>, <br> <b>{@link BankAtm#bankOfficeId}</b>,
- *  <br> <b>{@link BankAtm#address}</b>, <br> <b>{@link BankAtm#bank}</b>, <br> <b>{@link BankAtm#employee}</b>,
+ *  <br> <b>{@link BankAtm#address}</b>, <br> <b>{@link BankAtm#bank}</b>, <br> <b>{@link BankAtm#employeeId}</b>,
  *   <br> <b>{@link BankAtm#cashOutStatus}</b>,  <br> <b>{@link BankAtm#cashInStatus}</b>,
  *   <br> <b>{@link BankAtm#moneyQtyInAtm}</b>, <br> <b>{@link BankAtm#status}</b>
  *   @see tech.reliab.course.davityanlm.bank.service.AtmService*/
@@ -27,7 +27,7 @@ public class BankAtm {
 
     /** Поле сотрудник, который обслуживает банкомат <br>
      * @see Employee */
-    private Employee employee;
+    private Integer employeeId;
 
     /** Поле возможность снять деньги */
     private Boolean cashOutStatus;
@@ -74,7 +74,7 @@ public class BankAtm {
     }
 
     /** Конструктор для создания объекта класса */
-    public BankAtm(Bank bank, BankOffice bankOffice, Integer id, String name, Employee employee,
+    public BankAtm(Bank bank, BankOffice bankOffice, Integer id, String name, Integer employeeId,
                    Boolean cashOutStatus, Boolean cashInStatus, Integer moneyQtyInAtm,
                    Integer serviceCost, Status status){
         setBank(bank);
@@ -82,7 +82,7 @@ public class BankAtm {
         setId(id);
         setName(name);
         setAddress(bankOffice.getAddress());
-        setEmployee(employee);
+        setEmployeeId(employeeId);
         setCashOutStatus(cashOutStatus);
         setCashIntStatus(cashInStatus);
         setMoneyQtyInAtm(moneyQtyInAtm);
@@ -101,7 +101,7 @@ public class BankAtm {
                 ",\nАдрес: " + getAddress() +
                 ",\nСтатус: " + getStatus().toString() +
                 ",\nБанк владелец: " + getBank().getName() +
-                ",\nОбслуживает: " + getEmployee().getFullName() +
+                ",\nСотрудник №: " + getEmployeeId() +
                 ",\nВыдача денег: " + getCashOutStatus() +
                 ",\nВнесение денег: " + getCashInStatus() +
                 ",\nКол-во денег внутри: " + getMoneyQtyInAtm() +
@@ -139,10 +139,10 @@ public class BankAtm {
         return this.bank;
     }
 
-    /** Функция получения значения поля {@link BankAtm#employee}
+    /** Функция получения значения поля {@link BankAtm#employeeId}
      * @return возвращает сотрудника, который обслуживает банкомат */
-    public Employee getEmployee(){
-        return this.employee;
+    public Integer getEmployeeId(){
+        return this.employeeId;
     }
 
     /** Функция получения значения поля {@link BankAtm#cashOutStatus}
@@ -208,10 +208,10 @@ public class BankAtm {
         this.bank = bank;
     }
 
-    /** Процедура определения сотрудника банкомата {@link BankAtm#employee}
-     * @param employee сотрудник, который обсуживает банкомат */
-    public void setEmployee(Employee employee){
-        this.employee = employee;
+    /** Процедура определения сотрудника банкомата {@link BankAtm#employeeId}
+     * @param employeeId идентификатор сотрудника, который обсуживает банкомат */
+    public void setEmployeeId(Integer employeeId){
+        this.employeeId = employeeId;
     }
 
     /** Процедура определения статуса возможности снять деньги банкомата {@link BankAtm#cashOutStatus}
