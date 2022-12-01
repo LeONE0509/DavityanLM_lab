@@ -1,11 +1,6 @@
 package tech.reliab.course.davityanlm.bank.service.impl;
 
-import tech.reliab.course.davityanlm.bank.entity.Bank;
-import tech.reliab.course.davityanlm.bank.entity.CreditAccount;
-import tech.reliab.course.davityanlm.bank.entity.PaymentAccount;
 import tech.reliab.course.davityanlm.bank.entity.User;
-import tech.reliab.course.davityanlm.bank.service.CreditAccountService;
-import tech.reliab.course.davityanlm.bank.service.PaymentAccountService;
 import tech.reliab.course.davityanlm.bank.service.UserService;
 
 import java.time.LocalDate;
@@ -23,10 +18,8 @@ public class UserServiceOperations implements UserService {
     public static final UserService USER_SERVICE = new UserServiceOperations();
 
     @Override
-    public void createUser(Bank bank, Integer id, String fullName, LocalDate birthDate, String workPlace,
-                           CreditAccount creditAccount, PaymentAccount paymentAccount) {
-        bank.setClientQty(bank.getClientQty() + 1);
-        users.put(id, new User(bank, id, fullName, birthDate, workPlace, creditAccount, paymentAccount));
+    public void createUser(Integer id, String fullName, LocalDate birthDate, String workPlace) {
+        users.put(id, new User(id, fullName, birthDate, workPlace));
     }
 
     @Override

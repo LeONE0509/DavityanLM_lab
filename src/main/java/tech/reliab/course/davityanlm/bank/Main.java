@@ -70,21 +70,16 @@ public class Main {
             }
         }
 
-
-
-
-
-
-
-
-
-//        UserService userService = UserServiceOperations.USER_SERVICE;
-//        counter = 0;
-//        for (int i = 1; i <= QUANTITY_BANKS; i++){
-//            for (int j = 1; j <= QUANTITY_USERS_IN_ONE_BANK; j++){
-//                counter++;
-//            }
-//        }
+        UserService userService = UserServiceOperations.USER_SERVICE;
+        counter = 0;
+        for (int i = 1; i <= QUANTITY_BANKS; i++){
+            for (int j = 1; j <= QUANTITY_USERS_IN_ONE_BANK; j++){
+                counter++;
+                userService.createUser(counter, "User N" + counter,
+                                        LocalDate.of(2000, 1, 1),
+                                        "workPlace N" + counter);
+            }
+        }
 
 
 
