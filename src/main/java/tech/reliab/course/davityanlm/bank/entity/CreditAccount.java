@@ -73,13 +73,17 @@ public class CreditAccount {
     public String toString(){
         return "\nКредитный счёт{ " +
                 "\nID кредитного счета: " + getId() +
+                ",\nПользователь: " + getUser().getFullName() +
                 ",\nБанк счета: " + getBank().getName() +
                 ",\nКредит выдал: " + getEmployee().getFullName() +
                 ",\nID платежного счета: " + getId() +
                 ",\nДата начала кредита: " + getStartCreditDate() +
                 ",\nДата окончания кредита: " + getFinishCreditDate() +
                 ",\nСумма кредита: " + getCreditSum() +
+                ",\nЕжемесячный платёж: " + getCreditMonthPayment() +
+                ",\nСрок в месяцах: " + getCreditMonthQty() +
                 ",\nПроцент: " + getPercent() +
+                ",\nПлатёжный счет: " + getPaymentAccount() +
                 "\n}";
     }
 
