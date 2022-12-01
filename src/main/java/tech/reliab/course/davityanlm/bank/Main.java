@@ -110,7 +110,6 @@ public class Main {
             }
         }
 
-
         for (int i = 1; i <= QUANTITY_BANKS; i++){
             System.out.println("----------------------");
             System.out.println("Bank" + i + "\n");

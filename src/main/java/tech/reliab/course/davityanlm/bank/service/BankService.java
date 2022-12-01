@@ -6,6 +6,11 @@ import tech.reliab.course.davityanlm.bank.entity.Bank;
  * @version 0.1*/
 public interface BankService {
 
+    /** Процедура вывода всех данных по банку:
+     * банкоматы, офисы, сотрудники, клиенты в консоль
+     * @param id идентификатор банка*/
+    void getAllInformation(Integer id);
+
     /** Функция возвращает экземпляр класса {@link Bank}
      * @param id идентификатор банка */
     Bank getBank(Integer id);
