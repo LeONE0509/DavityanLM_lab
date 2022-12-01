@@ -1,5 +1,7 @@
 package tech.reliab.course.davityanlm.bank.entity;
 
+import tech.reliab.course.davityanlm.bank.service.PaymentAccountService;
+
 import java.time.LocalDate;
 import java.util.Random;
 
@@ -44,7 +46,8 @@ public class User {
     private Integer creditRate;
 
     /** Конструктор */
-    public User(Integer id, String fullName, LocalDate birthDate, String workPlace ,Bank bank){
+    public User(Bank bank, Integer id, String fullName, LocalDate birthDate, String workPlace,
+                CreditAccount creditAccount, PaymentAccount paymentAccount){
         setId(id);
         setFullName(fullName);
         setBirthDate(birthDate);
@@ -52,8 +55,8 @@ public class User {
         Random random = new Random();
         setMonthIncome(random.nextInt(10001));
         setBank(bank);
-        setCreditAccount(null);
-        setPaymentAccount(null);
+        setCreditAccount(creditAccount);
+        setPaymentAccount(paymentAccount);
         setCreditRate(calculateCreditRate(this.monthIncome));
     }
 
