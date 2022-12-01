@@ -50,18 +50,21 @@ public class CreditAccount {
     private PaymentAccount paymentAccount;
 
     /** Конструктор */
-    public CreditAccount(Integer id, User user, Bank bank, Employee employee, PaymentAccount paymentAccount){
-        setId(id);
-        setUser(user);
+    public CreditAccount(Bank bank, User user, Employee employee, PaymentAccount paymentAccount,
+                         Integer id, LocalDate startCreditDate, LocalDate finishCreditDate,
+                         Integer creditMonthQty, Integer creditSum, Integer creditMonthPayment){
         setBank(bank);
-        setStartCreditDate(LocalDate.of(1, 1, 1));
-        setFinishCreditDate(LocalDate.of(1,1,1));
-        setCreditMonthQty(0);
-        setCreditSum(0);
-        setCreditMonthPayment(0);
-        setPercent(bank.getPercent());
+        setUser(user);
         setEmployee(employee);
         setPaymentAccount(paymentAccount);
+        setId(id);
+        setStartCreditDate(startCreditDate);
+        setFinishCreditDate(finishCreditDate);
+        setCreditMonthQty(creditMonthQty);
+        setCreditSum(creditSum);
+        setCreditMonthPayment(creditMonthPayment);
+        setPercent(bank.getPercent());
+
     }
 
     /** Перегрузка функции toString()

@@ -11,12 +11,11 @@ public class Constants {
     public static final int QUANTITY_USERS_IN_ONE_BANK= 5;
     public static final int QUANTITY_PAYS_AND_CREDITS_IN_ONE_USER= 2;
 
-    /** Кол-во сотрудников в банке = кол-во офисов * кол-во сотрудников в одном офисе */
-    public static final int QUANTITY_EMPLOYEES_IN_ONE_BANK = QUANTITY_OFFICES_IN_ONE_BANK * QUANTITY_EMPLOYEES_ON_ONE_OFFICE;
-
     /** Кол-во офисов всего = кол-во офисов в одном банке * кол-во банков */
     public static final int QUANTITY_OFFICE = QUANTITY_OFFICES_IN_ONE_BANK * QUANTITY_BANKS;
 
+    /** Общее кол-во пользователей = кол-во пользователей в одном банке * все банки */
+    public static final int QUANTITY_USERS = QUANTITY_USERS_IN_ONE_BANK * QUANTITY_BANKS;
 
 
 

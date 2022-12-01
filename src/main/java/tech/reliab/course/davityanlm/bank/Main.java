@@ -82,6 +82,7 @@ public class Main {
         }
 
         PaymentAccountService paymentAccountService = PaymentServiceOperations.PAYMENT_ACCOUNT_SERVICE;
+        CreditAccountService creditAccountService = CreditAccountServiceOperations.CREDIT_ACCOUNT_SERVICE;
         counter = 0;
         Integer userCounter = 0;
         for (int i = 1; i <= QUANTITY_BANKS; i++){
@@ -93,20 +94,34 @@ public class Main {
                             bankService.getBank(i),
                             userService.getUser(userCounter),
                             counter, 0);
+
+                    creditAccountService.createCreditAccount(
+                            bankService.getBank(i),
+                            userService.getUser(userCounter),
+                            employeeService.getEmployee(i),
+                            paymentAccountService.getPaymentAccount(z),
+                            counter,
+                            LocalDate.of(2000, 1, 1),
+                            LocalDate.of(2000, 1, 1),
+                            12, 228000, 2280
+                    );
                 }
             }
         }
-
-
-
-
-
 
 
         for (int i = 1; i <= QUANTITY_BANKS; i++){
             System.out.println("----------------------");
             System.out.println("Bank" + i + "\n");
             System.out.println(bankService.getBank(i));
+            System.out.println("\n");
+            System.out.println("----------------------");
+        }
+
+        for (int i = 1; i <= QUANTITY_USERS; i++) {
+            System.out.println("----------------------");
+            System.out.println("User" + i + "\n");
+            System.out.println(userService.getUser(i));
             System.out.println("\n");
             System.out.println("----------------------");
         }
