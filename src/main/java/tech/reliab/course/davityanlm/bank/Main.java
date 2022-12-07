@@ -5,6 +5,7 @@ import tech.reliab.course.davityanlm.bank.service.*;
 import tech.reliab.course.davityanlm.bank.service.impl.*;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 import static tech.reliab.course.davityanlm.bank.utils.Constants.*;
 
@@ -124,6 +125,39 @@ public class Main {
             System.out.println(userService.getUser(i));
             System.out.println("\n");
         }
+
+        System.out.println("1 - Банк");
+        System.out.println("2 - Пользователь");
+        System.out.println("Выберите, введя число ");
+        Scanner in = new Scanner(System.in);
+        int answer = in.nextInt();
+        switch (answer) {
+            case 1 -> {
+                System.out.println("Введите номер банка, о котором вывести подробную информацию или 0 для вывода всех");
+                answer = in.nextInt();
+                if (answer == 0) {
+                    for (int i = 1; i <= QUANTITY_BANKS; i++) {
+                        bankService.getAllInformation(i);
+                    }
+                } else {
+                    bankService.getAllInformation(answer);
+                }
+            }
+            case 2 -> {
+                System.out.println("Введите номер клиента, о котором вывести подробную информацию или 0 для вывода всех");
+                answer = in.nextInt();
+                if (answer == 0) {
+                    for (int i = 1; i <= QUANTITY_USERS; i++) {
+                        userService.getAllInformation(i);
+                    }
+                } else {
+                    userService.getAllInformation(answer);
+                }
+            }
+            default -> System.out.println("Вы ввели неверное число");
+        }
+
+
 
     }
 }
