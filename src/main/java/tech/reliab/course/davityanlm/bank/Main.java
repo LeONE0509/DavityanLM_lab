@@ -140,6 +140,7 @@ public class Main {
                         bankService.getAllInformation(i);
                     }
                 } else {
+                    System.out.println(bankService.getBank(answer));
                     bankService.getAllInformation(answer);
                 }
             }
@@ -148,9 +149,11 @@ public class Main {
                 answer = in.nextInt();
                 if (answer == 0) {
                     for (int i = 1; i <= QUANTITY_USERS; i++) {
-                        userService.getAllInformation(i);
+                        System.out.println(bankService.getBank(i));
+
                     }
                 } else {
+                    userService.getAllInformation(answer);
                     userService.getAllInformation(answer);
                 }
             }

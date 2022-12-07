@@ -26,38 +26,31 @@ public class BankServiceOperations implements BankService {
         UserService userService = UserServiceOperations.USER_SERVICE;
 
         System.out.println("Информация о банке: " + getBank(id).getName());
+
         for (int i = 1; i <= QUANTITY_OFFICE; i++){
-            if(id == bankOfficeService.getBankOffice(i).getBankId()){
-                System.out.println("\n");
+            if (id == bankOfficeService.getBankOffice(i).getBankId()){
                 System.out.println(bankOfficeService.getBankOffice(i));
-
-                System.out.println("\n");
-                for (int j = 1; j <= QUANTITY_ATMS; j++){
-                    if (id == atmService.getAtm(j).getBank().getId()){
-                        System.out.println("\n");
-                        System.out.println(atmService.getAtm(j));
-                    }
-                }
-
-                System.out.println("\n");
-                for (int j = 1; j <= QUANTITY_EMPLOYEES; j++){
-                    if (id == employeeService.getEmployee(j).getBank().getId()){
-                        System.out.println("\n");
-                        System.out.println(employeeService.getEmployee(j));
-                    }
-                }
-
-                System.out.println("\n");
-                for (int j = 1; j < QUANTITY_USERS; j++){
-                    if (id == userService.getUser(j).getCreditAccount().getBank().getId()){
-                        System.out.println("\n");
-                        System.out.println(userService.getUser(j));
-                    }
-                }
-
             }
         }
-    }
+
+        for (int i = 1; i <= QUANTITY_ATMS; i++){
+            if (id == atmService.getAtm(i).getBank().getId()){
+                System.out.println(atmService.getAtm(i));
+            }
+        }
+
+        for (int i = 1; i <= QUANTITY_EMPLOYEES; i++){
+            if(id == employeeService.getEmployee(i).getBank().getId()){
+                System.out.println(employeeService.getEmployee(i));
+            }
+        }
+
+        for (int i = 1; i <= QUANTITY_USERS; i++){
+            if (id == userService.getUser(i).getCreditAccount().getBank().getId()){
+                System.out.println(userService.getUser(i));
+            }
+        }
+}
 
     @Override
     public Bank getBank(Integer id) {
