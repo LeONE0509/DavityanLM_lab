@@ -153,7 +153,6 @@ public class Main {
                     }
                 } else {
                     userService.getAllInformation(answer);
-                    userService.getAllInformation(answer);
                 }
             }
             default -> System.out.println("Вы ввели неверное число");
