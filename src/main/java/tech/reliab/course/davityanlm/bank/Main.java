@@ -140,7 +140,6 @@ public class Main {
                         bankService.getAllInformation(i);
                     }
                 } else {
-                    System.out.println(bankService.getBank(answer));
                     bankService.getAllInformation(answer);
                 }
             }
