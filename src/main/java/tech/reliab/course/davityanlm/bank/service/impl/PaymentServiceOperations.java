@@ -32,7 +32,7 @@ public class PaymentServiceOperations implements PaymentAccountService {
         }
 
         PaymentAccount paymentAccount = new PaymentAccount(bank, user, id, 0);
-
+        user.setPaymentAccount(paymentAccount);
         paymentAccounts.put(id, paymentAccount);
 
     }
