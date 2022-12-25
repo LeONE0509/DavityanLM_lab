@@ -12,7 +12,9 @@ public interface UserService {
 
     /** Функция для выявления банка, который выдаст кредит клиенту
      * @param money на какую сумму будет взят кредит
-     * @return id - идентификатор банка, который выдаст кредит*/
+     * @return массив из 2-х элементов <br>
+     * int[0] Bankid - идентификатор банка, который выдаст кредит <br>
+     * int[1] EmployeeId - идентификатор сотрудника, который выдаст кредит*/
     int[] searchPlaceForGiveCredit(Integer money) throws UserException;
 
     /** Функция получения кредита для клиента id на сумму money
