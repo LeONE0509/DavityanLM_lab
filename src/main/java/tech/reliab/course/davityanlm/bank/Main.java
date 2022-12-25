@@ -3,7 +3,6 @@ package tech.reliab.course.davityanlm.bank;
 import tech.reliab.course.davityanlm.bank.entity.BankAtm;
 import tech.reliab.course.davityanlm.bank.service.*;
 import tech.reliab.course.davityanlm.bank.service.impl.*;
-import tech.reliab.course.davityanlm.bank.utils.UserException;
 
 import java.time.LocalDate;
 
@@ -11,7 +10,7 @@ import static tech.reliab.course.davityanlm.bank.utils.Constants.*;
 
 /** @author Лев Вечность */
 public class Main {
-    public static void main(String[] args) throws UserException {
+    public static void main(String[] args) {
 
         BankService bankService = BankServiceOperations.BANK_SERVICE;
         for (int i = 1; i <= QUANTITY_BANKS; i++){
@@ -111,8 +110,7 @@ public class Main {
             }
         }
 
-        Boolean credit = userService.getCredit(5, 228000);
-        System.out.print(credit);
+
 
     }
 }
