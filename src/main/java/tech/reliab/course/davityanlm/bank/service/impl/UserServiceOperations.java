@@ -143,7 +143,12 @@ public class UserServiceOperations implements UserService {
 
     @Override
     public Boolean getCredit(Integer id, Integer money) throws UserException {
-        return false;
+        int[] idArray = searchPlaceForGiveCredit(money);
+
+
+
+
+        return true;
     }
 
     @Override
