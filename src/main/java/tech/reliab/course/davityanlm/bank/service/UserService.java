@@ -3,6 +3,7 @@ package tech.reliab.course.davityanlm.bank.service;
 import tech.reliab.course.davityanlm.bank.entity.User;
 import tech.reliab.course.davityanlm.bank.utils.UserException;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 /** Интерфейс операций, связанных с классом {@link User}
@@ -42,4 +43,9 @@ public interface UserService {
      * @param workPlace место работы клиента
      */
     void changeWorkPlace(User user, String workPlace);
+
+    /** Процедура для выведения всех данных о платёжных счетах {@link User}
+     * param id идентификатор пользователя */
+    void getUsersPaysInfo(Integer id) throws IOException;
+
 }
