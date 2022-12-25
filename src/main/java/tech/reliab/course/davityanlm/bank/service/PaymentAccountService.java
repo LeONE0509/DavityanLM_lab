@@ -26,4 +26,6 @@ public interface PaymentAccountService {
      * @param moneyQty сумма, которую необходимо вычесть */
     void subMoney(PaymentAccount paymentAccount,Integer moneyQty);
 
+    /**  Процедура для переноса платежного счета */
+    void transitAcc();
 }

@@ -3,16 +3,22 @@ package tech.reliab.course.davityanlm.bank.service.impl;
 import tech.reliab.course.davityanlm.bank.entity.Bank;
 import tech.reliab.course.davityanlm.bank.entity.PaymentAccount;
 import tech.reliab.course.davityanlm.bank.entity.User;
+import tech.reliab.course.davityanlm.bank.service.BankService;
 import tech.reliab.course.davityanlm.bank.service.PaymentAccountService;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /** Класс-реализация операций платежного счета, реализует интерфейс платежного счета {@link PaymentAccountService} <br>
  * Реализуется бизнес-логика. <br> Singleton*/
 public class PaymentServiceOperations implements PaymentAccountService {
     private final Map<Integer, PaymentAccount> paymentAccounts = new HashMap<>();
+
+    BankService bankService = BankServiceOperations.BANK_SERVICE;
 
     private PaymentServiceOperations(){}
 
@@ -52,5 +58,33 @@ public class PaymentServiceOperations implements PaymentAccountService {
             return;
         }
         paymentAccount.setCurrentSum(paymentAccount.getCurrentSum() - moneyQty);
+    }
+
+
+    public void transitAcc() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("transit.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                Pattern integerPattern = Pattern.compile("\\d+");
+                Matcher matcher = integerPattern.matcher(line);
+                List<Integer> integerList = new ArrayList<>();
+                while (matcher.find()) {
+                    integerList.add(Integer.parseInt(matcher.group()));
+                }
+                PaymentAccount payAcc = this.getPaymentAccount(integerList.get(0));
+                Bank bank = bankService.getBank(integerList.get(1));
+
+                System.out.println("До: \n");
+                System.out.println(payAcc);
+                payAcc.setBank(bank);
+                //payAcc.setBankName();
+                System.out.println("После: \n");
+                System.out.println(payAcc);
+            }
+        }
+        catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

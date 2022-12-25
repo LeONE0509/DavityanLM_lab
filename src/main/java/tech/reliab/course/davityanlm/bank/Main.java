@@ -92,26 +92,27 @@ public class Main {
 
                 for (int z = 1; z <= QUANTITY_PAYS_AND_CREDITS_IN_ONE_USER; z++){
                     counter++;
-//                    paymentAccountService.createPaymentAccount(
-//                            bankService.getBank(i),
-//                            userService.getUser(userCounter),
-//                            counter, 0);
+                    paymentAccountService.createPaymentAccount(
+                            bankService.getBank(i),
+                            userService.getUser(userCounter),
+                            counter, 0);
 
-//                    creditAccountService.createCreditAccount(
-//                            bankService.getBank(i),
-//                            userService.getUser(userCounter),
-//                            employeeService.getEmployee(i),
-//                            paymentAccountService.getPaymentAccount(z),
-//                            counter,
-//                            LocalDate.of(2000, 1, 1),
-//                            LocalDate.of(2000, 1, 1),
-//                            12, 228000, 2280);
+                    creditAccountService.createCreditAccount(
+                            bankService.getBank(i),
+                            userService.getUser(userCounter),
+                            employeeService.getEmployee(i),
+                            paymentAccountService.getPaymentAccount(z),
+                            counter,
+                            LocalDate.of(2000, 1, 1),
+                            LocalDate.of(2000, 1, 1),
+                            12, 228000, 2280);
                 }
             }
         }
 
         userService.getUsersPaysInfo(1);
 
+        paymentAccountService.transitAcc();
 
 
 
