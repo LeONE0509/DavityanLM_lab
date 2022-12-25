@@ -9,6 +9,7 @@ import static tech.reliab.course.davityanlm.bank.utils.Constants.*;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 /** Класс-реализация операций клиента, реализует интерфейс клиента {@link User} <br>
  * Реализуется бизнес-логика. Singleton*/
@@ -24,7 +25,7 @@ public class UserServiceOperations implements UserService {
     public int[] searchPlaceForGiveCredit(Integer money) throws UserException {
 
         /* Сразу инициализируем массив, который мы будем возвращать */
-        int[] idArray = new int[4];
+        int[] idArray = new int[2];
 
         /* Все подходящие элементы мы будем сохранять в массивы */
         Map<Integer, Bank> banks = new HashMap<>(); /* Все банки, которые подходят клиенту */
@@ -84,6 +85,59 @@ public class UserServiceOperations implements UserService {
             }
         }
 
+        /* Если мы не нашли ни одного банка, который может выдать нам кредит */
+        if (banks.size() == 0) {
+            throw new UserException("Не найдено, подходящих банков");
+        } else { /* Если нашли, то даём пользователю сделать выбор */
+            for (int i = 1; i <= banks.size(); i++) { /* Выводим все банки списком */
+                Bank bank = banks.get(i);
+                System.out.printf("%d - %s: rating = %d, interestRate = %.2f \n",
+                                  i, bank.getName(), bank.getRate(), bank.getPercent());
+            }
+            Scanner in = new Scanner(System.in);
+            System.out.print("Выберите номер банка: ");
+            int bankId = in.nextInt();
+
+            /* Здесь можно было обойтись и без этого исключения
+            * Вставив в while выбор, но надо набрать 5 исключений */
+            if(!banks.containsValue(banks.get(bankId))) {
+                throw new UserException("Такого номера в списке банков нет");
+            }
+
+            System.out.println("Вы выбрали банк: " + banks.get(bankId));
+            bankId = banks.get(bankId).getId(); /* Здесь мы берем уже настоящий id банка */
+            idArray[0] = bankId; /* Запоминаем банк */
+            for (int i = 1; i <= offices.size(); i++) { /* Выводим все офисы банка */
+                BankOffice office = offices.get(i);
+                if (office.getBankId() == bankId) {
+                    System.out.printf("%d - %s, address: %s \n", i, office.getName(), office.getAddress());
+                }
+            }
+            System.out.print("Выберите офис, в котором хотите получить кредит: ");
+            int officeId = in.nextInt();
+
+            if (!offices.containsValue(offices.get(officeId))) {
+                throw new UserException("Такого офиса в списке офисов нет");
+            }
+
+            System.out.println("Вы выбрали офис: " + offices.get(officeId));
+            officeId = offices.get(officeId).getId();
+
+            for (int i = 1; i <= employees.size(); i++) {
+                Employee employee = employees.get(i);
+                if (employee.getBankOffice().getId() == officeId) {
+                    System.out.printf("%d - %s, должность: %s \n",
+                                    i, employee.getFullName(), employee.getPost());
+                }
+            }
+            System.out.print("Выберите сотрудника: ");
+            int employeeId = in.nextInt();
+            if (!employees.containsValue(employees.get(employeeId))) {
+                throw new UserException("Такого сотрудника нет в списке сотрудников");
+            }
+            employeeId = employees.get(employeeId).getId();
+            idArray[1] = employeeId;
+        }
         return idArray;
     }
 
