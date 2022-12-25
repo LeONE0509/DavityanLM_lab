@@ -15,6 +15,12 @@ import java.util.Scanner;
  * Реализуется бизнес-логика. Singleton*/
 public class UserServiceOperations implements UserService {
 
+    /* Сервисы нам нужны, чтобы получать интересующую нас информацию о сущностях  */
+    BankService bankService = BankServiceOperations.BANK_SERVICE;
+    BankOfficeService bankOfficeService = BankOfficeServiceOperations.BANK_OFFICE_SERVICE;
+    EmployeeService employeeService = EmployeeServiceOperations.EMPLOYEE_SERVICE;
+    AtmService atmService = AtmServiceOperations.ATM_SERVICE;
+
     private final Map<Integer, User> users = new HashMap<>();
 
     private UserServiceOperations(){}
@@ -32,12 +38,6 @@ public class UserServiceOperations implements UserService {
         Map<Integer, BankOffice> offices = new HashMap<>(); /* Все офисы, которые подходят клиенту */
         Map<Integer, Employee> employees = new HashMap<>(); /* Все сотрудники, которые подходят клиенту */
         Map<Integer, BankAtm> atms = new HashMap<>(); /* Все банкоматы, которые подходят клиенту */
-
-        /* Сервисы нам нужны, чтобы получать интересующую нас информацию о сущностях  */
-        BankService bankService = BankServiceOperations.BANK_SERVICE;
-        BankOfficeService bankOfficeService = BankOfficeServiceOperations.BANK_OFFICE_SERVICE;
-        EmployeeService employeeService = EmployeeServiceOperations.EMPLOYEE_SERVICE;
-        AtmService atmService = AtmServiceOperations.ATM_SERVICE;
 
         /* Перебираем все банки, которые существуют */
         for (int bankIndex = 1; bankIndex <= QUANTITY_BANKS; bankIndex++) {
@@ -87,7 +87,7 @@ public class UserServiceOperations implements UserService {
 
         /* Если мы не нашли ни одного банка, который может выдать нам кредит */
         if (banks.size() == 0) {
-            throw new UserException("Не найдено, подходящих банков");
+            throw new UserException("Не найдено подходящих банков");
         } else { /* Если нашли, то даём пользователю сделать выбор */
             for (int i = 1; i <= banks.size(); i++) { /* Выводим все банки списком */
                 Bank bank = banks.get(i);
@@ -143,11 +143,55 @@ public class UserServiceOperations implements UserService {
 
     @Override
     public Boolean getCredit(Integer id, Integer money) throws UserException {
+        PaymentAccountService paymentAccountService = PaymentServiceOperations.PAYMENT_ACCOUNT_SERVICE;
+        CreditAccountService creditAccountService = CreditAccountServiceOperations.CREDIT_ACCOUNT_SERVICE;
+
         int[] idArray = searchPlaceForGiveCredit(money);
+        User user = users.get(id);
+        Bank bank = bankService.getBank(idArray[0]);
+        Scanner in = new Scanner(System.in);
 
+        boolean isUserClient = false;
+        int payAccId = 0;
 
-
-
+        /* Проверяем рейтинг банка, согласно условиям */
+        if (user.getCreditRate() < 5000 && bank.getRate() > 50) {
+            throw new UserException("Ваш рейтинг слишком мал!");
+        }
+        else {
+            /* Проверяем является ли пользователь клиентом данного банка */
+            if (!isUserClient) {
+                System.out.println("У вас отсутствует счет в этом банке, желаете завести? \n");
+                System.out.println("1 - да \n");
+                System.out.println("0 - нет \n");
+                System.out.println("Ваш выбор: ");
+                if (in.nextInt() == 1) {
+                    payAccId = QUANTITY_PAYS_AND_CREDITS + 1;
+                    paymentAccountService.createPaymentAccount(bank, user, payAccId, 0);
+                } else {
+                    throw new UserException("Невозможно выдать кредит, если у вас не будет счета");
+                }
+            }
+            System.out.println("Ваш платежный счет:");
+            System.out.println(paymentAccountService.getPaymentAccount(payAccId));
+            System.out.print("На сколько месяцев вы хотите получить кредит: ");
+            int countMonths = in.nextInt();
+            LocalDate dateStart = LocalDate.now();
+            LocalDate dateFinish = dateStart.plusMonths(countMonths);
+            creditAccountService.createCreditAccount(
+                    bank,
+                    user,
+                    employeeService.getEmployee(idArray[1]),
+                    paymentAccountService.getPaymentAccount(payAccId),
+                    QUANTITY_PAYS_AND_CREDITS + 1,
+                    dateStart,
+                    dateFinish,
+                    countMonths,
+                    money,
+                    (money + money * (bank.getRate() / 100)) / countMonths);
+            System.out.println("Кредит успешно выдан!");
+            System.out.println(creditAccountService.getCreditAccount(QUANTITY_PAYS_AND_CREDITS + 1));
+        }
         return true;
     }
 

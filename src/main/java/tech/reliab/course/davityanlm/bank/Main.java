@@ -32,7 +32,7 @@ public class Main {
                         true,
                         0, true,
                         true, true,
-                        0, 0
+                        4500000, 0
                 );
             }
         }
@@ -49,7 +49,7 @@ public class Main {
                         "ATM N" + counter,
                         counter,
                         true, true,
-                        0, 0,
+                        1500000, 0,
                         BankAtm.Status.WORKING
                 );
             }
@@ -111,10 +111,8 @@ public class Main {
             }
         }
 
-        userService.getCredit(5, 228000);
-
-
-
+        Boolean credit = userService.getCredit(5, 228000);
+        System.out.print(credit);
 
     }
 }
