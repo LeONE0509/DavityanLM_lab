@@ -6,6 +6,7 @@ import tech.reliab.course.davityanlm.bank.service.impl.*;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Scanner;
 
 import static tech.reliab.course.davityanlm.bank.utils.Constants.*;
 
@@ -112,10 +113,28 @@ public class Main {
             }
         }
 
-        userService.getUsersPaysInfo(2);
+        Scanner in = new Scanner(System.in);
+        System.out.print("Введите свой id: ");
+        Integer userId = in.nextInt();
 
-        paymentAccountService.transitAcc();
+        System.out.println("1 - Вывести все счета в txt файл");
+        System.out.println("2 - Перенести счет из одного банка в другой");
+        System.out.print("Выберите действие:");
 
+        int answer = in.nextInt();
+        switch (answer) {
+            case 1: {
+                userService.getUsersPaysInfo(userId);
+                break;
+            }
+            case 2: {
+                paymentAccountService.transitAcc();
+                break;
+            }
+            default:
+                System.out.println("Надо было что-то выбрать");
+
+        }
     }
 }
 

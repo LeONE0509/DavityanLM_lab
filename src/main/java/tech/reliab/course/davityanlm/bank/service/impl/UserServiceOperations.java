@@ -284,6 +284,8 @@ public class UserServiceOperations implements UserService {
                 writer.write("У пользователя отсутствуют кредитные счета");
                 writer.flush();
             }
+
+            writer.write("\nEOF");
         } catch (IOException ex) {
             throw new IOException(ex.getMessage());
         }
