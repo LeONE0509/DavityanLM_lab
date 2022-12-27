@@ -116,6 +116,7 @@ public class Main {
 
         Scanner in = new Scanner(System.in);
         System.out.println("Вы хотите получить кредит! Вы по адресу!");
+        System.out.print("Введите свой id: ");
         Integer userId = in.nextInt();
 
         System.out.println("На какую сумму хотите взять кредит?");
