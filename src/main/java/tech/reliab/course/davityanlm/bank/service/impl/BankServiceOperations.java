@@ -8,13 +8,16 @@ import static tech.reliab.course.davityanlm.bank.utils.Constants.*;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Класс-реализация операций банка, реализует интерфейс банковского сервиса {@link BankService}. <br>
- * Реализуется бизнес-логика. <br> Singleton*/
+/**
+ * Класс-реализация операций банка, реализует интерфейс банковского сервиса {@link BankService}. <br>
+ * Реализуется бизнес-логика. <br> Singleton
+ */
 public class BankServiceOperations implements BankService {
 
     private final Map<Integer, Bank> banks = new HashMap<>();
 
-    private BankServiceOperations(){}
+    private BankServiceOperations() {
+    }
 
     public static final BankService BANK_SERVICE = new BankServiceOperations();
 
@@ -27,30 +30,30 @@ public class BankServiceOperations implements BankService {
 
         System.out.println("Информация о банке: " + getBank(id).getName());
 
-        for (int i = 1; i <= QUANTITY_OFFICE; i++){
-            if (id == bankOfficeService.getBankOffice(i).getBankId()){
+        for (int i = 1; i <= QUANTITY_OFFICE; i++) {
+            if (id == bankOfficeService.getBankOffice(i).getBankId()) {
                 System.out.println(bankOfficeService.getBankOffice(i));
             }
         }
 
-        for (int i = 1; i <= QUANTITY_ATMS; i++){
-            if (id == atmService.getAtm(i).getBank().getId()){
+        for (int i = 1; i <= QUANTITY_ATMS; i++) {
+            if (id == atmService.getAtm(i).getBank().getId()) {
                 System.out.println(atmService.getAtm(i));
             }
         }
 
-        for (int i = 1; i <= QUANTITY_EMPLOYEES; i++){
-            if(id == employeeService.getEmployee(i).getBank().getId()){
+        for (int i = 1; i <= QUANTITY_EMPLOYEES; i++) {
+            if (id == employeeService.getEmployee(i).getBank().getId()) {
                 System.out.println(employeeService.getEmployee(i));
             }
         }
 
-        for (int i = 1; i <= QUANTITY_USERS; i++){
-            if (id == userService.getUser(i).getCreditAccount().getBank().getId()){
+        for (int i = 1; i <= QUANTITY_USERS; i++) {
+            if (id == userService.getUser(i).getCreditAccount().getBank().getId()) {
                 System.out.println(userService.getUser(i));
             }
         }
-}
+    }
 
     @Override
     public Bank getBank(Integer id) {
@@ -58,7 +61,7 @@ public class BankServiceOperations implements BankService {
     }
 
     @Override
-    public void createBank(Integer id, String name){
+    public void createBank(Integer id, String name) {
         banks.put(id, new Bank(id, name));
     }
 

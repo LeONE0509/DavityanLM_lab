@@ -7,15 +7,20 @@ import tech.reliab.course.davityanlm.bank.service.BankOfficeService;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Класс-реализация операций банковского офиса, реализует интерфейс сервиса банковского офиса {@link BankOfficeService}
- * <br> Реализуется бизнес-логика. Singleton*/
+/**
+ * Класс-реализация операций банковского офиса, реализует интерфейс сервиса банковского офиса {@link BankOfficeService}
+ * <br> Реализуется бизнес-логика. Singleton
+ */
 public class BankOfficeServiceOperations implements BankOfficeService {
     private final Map<Integer, BankOffice> offices = new HashMap<>();
 
-    /** Закрытый конструктор, для реализации Singleton */
-    private BankOfficeServiceOperations(){}
+    /**
+     * Закрытый конструктор, для реализации Singleton
+     */
+    private BankOfficeServiceOperations() {
+    }
 
-    public static final BankOfficeService BANK_OFFICE_SERVICE= new BankOfficeServiceOperations();
+    public static final BankOfficeService BANK_OFFICE_SERVICE = new BankOfficeServiceOperations();
 
     @Override
     public void createOffice(Bank bank, Integer id, String name, String address, Boolean activityStatus,

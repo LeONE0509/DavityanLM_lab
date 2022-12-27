@@ -11,8 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-/** Класс-реализация операций клиента, реализует интерфейс клиента {@link User} <br>
- * Реализуется бизнес-логика. Singleton*/
+/**
+ * Класс-реализация операций клиента, реализует интерфейс клиента {@link User} <br>
+ * Реализуется бизнес-логика. Singleton
+ */
 public class UserServiceOperations implements UserService {
 
     /* Сервисы нам нужны, чтобы получать интересующую нас информацию о сущностях  */
@@ -23,7 +25,8 @@ public class UserServiceOperations implements UserService {
 
     private final Map<Integer, User> users = new HashMap<>();
 
-    private UserServiceOperations(){}
+    private UserServiceOperations() {
+    }
 
     public static final UserService USER_SERVICE = new UserServiceOperations();
 
@@ -44,10 +47,10 @@ public class UserServiceOperations implements UserService {
             /* Перебираем все офисы и проверяем: принадлежит ли офис этому банку? */
             for (int officeIndex = 1; officeIndex <= QUANTITY_OFFICE; officeIndex++) {
                 BankOffice office = bankOfficeService.getBankOffice(officeIndex);
-                if(office.getBankId() == bankIndex && /* Если офис принадлежит банку и */
-                    office.getActivityStatus() && /* Если офис работает и */
-                    office.getMayToCreditStatus() && /* Если офис может выдавать кредиты и */
-                    office.getMoneyQtyInOffice() > money) { /* Кол-во денег в офисе больше, чем сумма кредита */
+                if (office.getBankId() == bankIndex && /* Если офис принадлежит банку и */
+                        office.getActivityStatus() && /* Если офис работает и */
+                        office.getMayToCreditStatus() && /* Если офис может выдавать кредиты и */
+                        office.getMoneyQtyInOffice() > money) { /* Кол-во денег в офисе больше, чем сумма кредита */
                     /* Значит, нам нужно найти сотрудника в этом офисе, который может выдавать кредиты */
                     for (int employeeIndex = 1; employeeIndex <= QUANTITY_EMPLOYEES; employeeIndex++) {
                         Employee employee = employeeService.getEmployee(employeeIndex);
@@ -56,25 +59,25 @@ public class UserServiceOperations implements UserService {
                             for (int atmIndex = 1; atmIndex <= QUANTITY_ATMS; atmIndex++) { /* Значит ищем банкомат */
                                 BankAtm atm = atmService.getAtm(atmIndex);
                                 if (atm.getBankOfficeId() == officeIndex && /* Если банкомат принадлежит офису */
-                                    atm.getStatus() == BankAtm.Status.WORKING /*Если банкомата статус "Работает"*/
-                                    && atm.getCashOutStatus() && /* Если с банкомата можно снимать деньги */
-                                    atm.getMoneyQtyInAtm() >= money /* Если в банкомате есть нужное кол-во денег */
+                                        atm.getStatus() == BankAtm.Status.WORKING /*Если банкомата статус "Работает"*/
+                                        && atm.getCashOutStatus() && /* Если с банкомата можно снимать деньги */
+                                        atm.getMoneyQtyInAtm() >= money /* Если в банкомате есть нужное кол-во денег */
                                 ) {
                                     /* Мы нашли что искали, теперь надо занести в список возможных мест для кредита
-                                    * Если такую сущность мы ещё не сохраняли, тогда сохраним */
+                                     * Если такую сущность мы ещё не сохраняли, тогда сохраним */
                                     if (!banks.containsValue(bankService.getBank(bankIndex))) {
-                                         banks.put(banks.size() + 1, bankService.getBank(bankIndex));
+                                        banks.put(banks.size() + 1, bankService.getBank(bankIndex));
                                     }
 
                                     if (!offices.containsValue(bankOfficeService.getBankOffice(officeIndex))) {
                                         offices.put(offices.size() + 1, office);
                                     }
 
-                                    if(!employees.containsValue(employeeService.getEmployee(employeeIndex))) {
+                                    if (!employees.containsValue(employeeService.getEmployee(employeeIndex))) {
                                         employees.put(employees.size() + 1, employee);
                                     }
 
-                                    if(!atms.containsValue(atmService.getAtm(atmIndex))) {
+                                    if (!atms.containsValue(atmService.getAtm(atmIndex))) {
                                         atms.put(atms.size() + 1, atm);
                                     }
                                 }
@@ -92,15 +95,15 @@ public class UserServiceOperations implements UserService {
             for (int i = 1; i <= banks.size(); i++) { /* Выводим все банки списком */
                 Bank bank = banks.get(i);
                 System.out.printf("%d - %s: rating = %d, interestRate = %.2f \n",
-                                  i, bank.getName(), bank.getRate(), bank.getPercent());
+                        i, bank.getName(), bank.getRate(), bank.getPercent());
             }
             Scanner in = new Scanner(System.in);
             System.out.print("Выберите номер банка: ");
             int bankId = in.nextInt();
 
             /* Здесь можно было обойтись и без этого исключения
-            * Вставив в while выбор, но надо набрать 5 исключений */
-            if(!banks.containsValue(banks.get(bankId))) {
+             * Вставив в while выбор, но надо набрать 5 исключений */
+            if (!banks.containsValue(banks.get(bankId))) {
                 throw new UserException("Такого номера в списке банков нет");
             }
 
@@ -127,7 +130,7 @@ public class UserServiceOperations implements UserService {
                 Employee employee = employees.get(i);
                 if (employee.getBankOffice().getId() == officeId) {
                     System.out.printf("%d - %s, должность: %s \n",
-                                    i, employee.getFullName(), employee.getPost());
+                            i, employee.getFullName(), employee.getPost());
                 }
             }
             System.out.print("Выберите сотрудника: ");
@@ -146,6 +149,14 @@ public class UserServiceOperations implements UserService {
         PaymentAccountService paymentAccountService = PaymentServiceOperations.PAYMENT_ACCOUNT_SERVICE;
         CreditAccountService creditAccountService = CreditAccountServiceOperations.CREDIT_ACCOUNT_SERVICE;
 
+        if (id <= 0 || id > QUANTITY_USERS) {
+            throw new UserException("Такого пользователя не существует");
+        }
+
+        if (money <= 0) {
+            throw new UserException("Кредит не может быть выдан на отрицательную сумму");
+        }
+
         int[] idArray = searchPlaceForGiveCredit(money);
         User user = users.get(id);
         Bank bank = bankService.getBank(idArray[0]);
@@ -157,8 +168,7 @@ public class UserServiceOperations implements UserService {
         /* Проверяем рейтинг банка, согласно условиям */
         if (user.getCreditRate() < 5000 && bank.getRate() > 50) {
             throw new UserException("Ваш рейтинг слишком мал!");
-        }
-        else {
+        } else {
             /* Проверяем является ли пользователь клиентом данного банка */
             if (!isUserClient) {
                 System.out.println("У вас отсутствует счет в этом банке, желаете завести? \n");
@@ -203,14 +213,14 @@ public class UserServiceOperations implements UserService {
         System.out.println("Информация о пользователе: " + getUser(id).getFullName());
 
 
-        for (int i = 1; i <= QUANTITY_PAYS_AND_CREDITS; i++){
-            if(id == paymentAccountService.getPaymentAccount(i).getUser().getId()){
+        for (int i = 1; i <= QUANTITY_PAYS_AND_CREDITS; i++) {
+            if (id == paymentAccountService.getPaymentAccount(i).getUser().getId()) {
                 System.out.println(paymentAccountService.getPaymentAccount(i));
             }
         }
 
-        for (int i = 1; i <= QUANTITY_PAYS_AND_CREDITS; i++){
-            if (id == creditAccountService.getCreditAccount(i).getUser().getId()){
+        for (int i = 1; i <= QUANTITY_PAYS_AND_CREDITS; i++) {
+            if (id == creditAccountService.getCreditAccount(i).getUser().getId()) {
                 System.out.println(creditAccountService.getCreditAccount(i));
             }
         }
@@ -226,7 +236,7 @@ public class UserServiceOperations implements UserService {
         return users.get(id);
     }
 
-    public void changeWorkPlace(User user, String workPlace){
+    public void changeWorkPlace(User user, String workPlace) {
         user.setWorkPlace(workPlace);
     }
 

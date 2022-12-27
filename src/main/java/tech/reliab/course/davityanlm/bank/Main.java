@@ -6,22 +6,25 @@ import tech.reliab.course.davityanlm.bank.service.impl.*;
 import tech.reliab.course.davityanlm.bank.utils.UserException;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 import static tech.reliab.course.davityanlm.bank.utils.Constants.*;
 
-/** @author Лев Вечность */
+/**
+ * @author Лев Вечность
+ */
 public class Main {
     public static void main(String[] args) throws UserException {
 
         BankService bankService = BankServiceOperations.BANK_SERVICE;
-        for (int i = 1; i <= QUANTITY_BANKS; i++){
+        for (int i = 1; i <= QUANTITY_BANKS; i++) {
             bankService.createBank(i, "bank N" + i);
         }
 
         BankOfficeService bankOfficeService = BankOfficeServiceOperations.BANK_OFFICE_SERVICE;
         Integer counter = 0;
-        for (int i = 1; i <= QUANTITY_BANKS; i++){
-            for (int j = 1; j <= QUANTITY_OFFICES_IN_ONE_BANK; j++){
+        for (int i = 1; i <= QUANTITY_BANKS; i++) {
+            for (int j = 1; j <= QUANTITY_OFFICES_IN_ONE_BANK; j++) {
                 counter++;
                 bankOfficeService.createOffice(
                         bankService.getBank(i),
@@ -39,8 +42,8 @@ public class Main {
 
         AtmService atmService = AtmServiceOperations.ATM_SERVICE;
         counter = 0;
-        for (int i = 1; i <= QUANTITY_OFFICE; i++){
-            for (int j = 1; j <= QUANTITY_ATMS_IN_ONE_OFFICE; j++){
+        for (int i = 1; i <= QUANTITY_OFFICE; i++) {
+            for (int j = 1; j <= QUANTITY_ATMS_IN_ONE_OFFICE; j++) {
                 counter++;
                 atmService.createATM(
                         bankService.getBank(bankOfficeService.getBankOffice(i).getBankId()),
@@ -57,8 +60,8 @@ public class Main {
 
         EmployeeService employeeService = EmployeeServiceOperations.EMPLOYEE_SERVICE;
         counter = 0;
-        for (int i = 1; i <= QUANTITY_OFFICE; i++){
-            for (int j = 1; j <= QUANTITY_EMPLOYEES_ON_ONE_OFFICE; j++){
+        for (int i = 1; i <= QUANTITY_OFFICE; i++) {
+            for (int j = 1; j <= QUANTITY_EMPLOYEES_ON_ONE_OFFICE; j++) {
                 counter++;
                 employeeService.createEmployee(
                         counter, "Employee N" + counter,
@@ -73,12 +76,12 @@ public class Main {
 
         UserService userService = UserServiceOperations.USER_SERVICE;
         counter = 0;
-        for (int i = 1; i <= QUANTITY_BANKS; i++){
-            for (int j = 1; j <= QUANTITY_USERS_IN_ONE_BANK; j++){
+        for (int i = 1; i <= QUANTITY_BANKS; i++) {
+            for (int j = 1; j <= QUANTITY_USERS_IN_ONE_BANK; j++) {
                 counter++;
                 userService.createUser(counter, "User N" + counter,
-                                        LocalDate.of(2000, 1, 1),
-                                        "workPlace N" + counter);
+                        LocalDate.of(2000, 1, 1),
+                        "workPlace N" + counter);
             }
         }
 
@@ -86,11 +89,11 @@ public class Main {
         CreditAccountService creditAccountService = CreditAccountServiceOperations.CREDIT_ACCOUNT_SERVICE;
         counter = 0;
         Integer userCounter = 0;
-        for (int i = 1; i <= QUANTITY_BANKS; i++){
-            for (int j = 1; j <= QUANTITY_USERS_IN_ONE_BANK; j++){
+        for (int i = 1; i <= QUANTITY_BANKS; i++) {
+            for (int j = 1; j <= QUANTITY_USERS_IN_ONE_BANK; j++) {
                 userCounter++;
 
-                for (int z = 1; z <= QUANTITY_PAYS_AND_CREDITS_IN_ONE_USER; z++){
+                for (int z = 1; z <= QUANTITY_PAYS_AND_CREDITS_IN_ONE_USER; z++) {
                     counter++;
                     paymentAccountService.createPaymentAccount(
                             bankService.getBank(i),
@@ -111,8 +114,16 @@ public class Main {
             }
         }
 
-        Boolean credit = userService.getCredit(5, 228000);
-        System.out.print(credit);
+        Scanner in = new Scanner(System.in);
+        System.out.println("Вы хотите получить кредит! Вы по адресу!");
+        Integer userId = in.nextInt();
+
+        System.out.println("На какую сумму хотите взять кредит?");
+        Integer money = in.nextInt();
+
+
+        userService.getCredit(userId, money);
+        System.out.print("Кредит успешно выдан. Удачи выплатить!");
 
     }
 }

@@ -7,12 +7,15 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Класс-реализация операций кредитного счета, реализует интерфейс сервис кредитного счета {@link CreditAccountService}.
- * <br> Реализуется бизнес-логика. Singleton */
+/**
+ * Класс-реализация операций кредитного счета, реализует интерфейс сервис кредитного счета {@link CreditAccountService}.
+ * <br> Реализуется бизнес-логика. Singleton
+ */
 public class CreditAccountServiceOperations implements CreditAccountService {
     private final Map<Integer, CreditAccount> creditAccounts = new HashMap<>();
 
-    private CreditAccountServiceOperations(){}
+    private CreditAccountServiceOperations() {
+    }
 
     public static final CreditAccountService CREDIT_ACCOUNT_SERVICE = new CreditAccountServiceOperations();
 
@@ -31,7 +34,7 @@ public class CreditAccountServiceOperations implements CreditAccountService {
         return creditAccounts.get(id);
     }
 
-    public void subCreditSum(CreditAccount creditAccount, Integer sum){
+    public void subCreditSum(CreditAccount creditAccount, Integer sum) {
         creditAccount.setCreditSum(creditAccount.getCreditSum() - sum);
     }
 
