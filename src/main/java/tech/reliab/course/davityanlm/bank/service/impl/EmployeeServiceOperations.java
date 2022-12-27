@@ -9,12 +9,15 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Класс-реализация операций сотрудника, реализует интерфейс сотрудника {@link EmployeeService} <br>
- * Реализуется бизнес-логика. Singleton*/
+/**
+ * Класс-реализация операций сотрудника, реализует интерфейс сотрудника {@link EmployeeService} <br>
+ * Реализуется бизнес-логика. Singleton
+ */
 public class EmployeeServiceOperations implements EmployeeService {
     private final Map<Integer, Employee> employees = new HashMap<>();
 
-    private EmployeeServiceOperations(){}
+    private EmployeeServiceOperations() {
+    }
 
     public static final EmployeeService EMPLOYEE_SERVICE = new EmployeeServiceOperations();
 
@@ -24,7 +27,7 @@ public class EmployeeServiceOperations implements EmployeeService {
                                Boolean mayToGiveCredit, Integer salary) {
         bank.setEmployeeQty(bank.getEmployeeQty() + 1);
         employees.put(id, new Employee(id, fullName, birthDate, post,
-                        bank, onlineOrNot, bankOffice, mayToGiveCredit, salary));
+                bank, onlineOrNot, bankOffice, mayToGiveCredit, salary));
     }
 
     @Override
@@ -32,8 +35,8 @@ public class EmployeeServiceOperations implements EmployeeService {
         return employees.get(id);
     }
 
-    public void addSalary(Employee employee, Integer sum){
-      employee.setSalary(employee.getSalary() + sum);
+    public void addSalary(Employee employee, Integer sum) {
+        employee.setSalary(employee.getSalary() + sum);
     }
 
 }

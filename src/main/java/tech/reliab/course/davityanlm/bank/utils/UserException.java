@@ -1,9 +1,9 @@
 package tech.reliab.course.davityanlm.bank.utils;
 
 
-public class UserException extends Exception{
+public class UserException extends Exception {
 
-    public UserException(String message){
+    public UserException(String message) {
         super(message);
     }
 

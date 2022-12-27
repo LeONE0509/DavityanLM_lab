@@ -13,27 +13,30 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/** Класс-реализация операций платежного счета, реализует интерфейс платежного счета {@link PaymentAccountService} <br>
- * Реализуется бизнес-логика. <br> Singleton*/
+/**
+ * Класс-реализация операций платежного счета, реализует интерфейс платежного счета {@link PaymentAccountService} <br>
+ * Реализуется бизнес-логика. <br> Singleton
+ */
 public class PaymentServiceOperations implements PaymentAccountService {
     private final Map<Integer, PaymentAccount> paymentAccounts = new HashMap<>();
 
     BankService bankService = BankServiceOperations.BANK_SERVICE;
 
-    private PaymentServiceOperations(){}
+    private PaymentServiceOperations() {
+    }
 
     public static final PaymentAccountService PAYMENT_ACCOUNT_SERVICE = new PaymentServiceOperations();
 
     @Override
     public void createPaymentAccount(Bank bank, User user, Integer id, Integer currentSum) {
         boolean isUserAlreadyExist = false;
-        for (int i = 1; i <= paymentAccounts.size(); i++){
-            if (Objects.equals(paymentAccounts.get(i).getUser().getId(), user.getId())){
+        for (int i = 1; i <= paymentAccounts.size(); i++) {
+            if (Objects.equals(paymentAccounts.get(i).getUser().getId(), user.getId())) {
                 isUserAlreadyExist = true;
             }
         }
 
-        if(!isUserAlreadyExist){
+        if (!isUserAlreadyExist) {
             bank.setClientQty(bank.getClientQty() + 1);
         }
 
@@ -53,7 +56,7 @@ public class PaymentServiceOperations implements PaymentAccountService {
     }
 
     public void subMoney(PaymentAccount paymentAccount, Integer moneyQty) {
-        if(moneyQty > paymentAccount.getCurrentSum()){
+        if (moneyQty > paymentAccount.getCurrentSum()) {
             System.out.println("Недостаточно средств");
             return;
         }
@@ -81,8 +84,7 @@ public class PaymentServiceOperations implements PaymentAccountService {
                 System.out.println("После: \n");
                 System.out.println(payAcc);
             }
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
     }
