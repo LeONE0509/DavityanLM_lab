@@ -110,7 +110,7 @@ public class Main {
             }
         }
 
-        userService.getUsersPaysInfo(1);
+        userService.getUsersPaysInfo(2);
 
         paymentAccountService.transitAcc();
 

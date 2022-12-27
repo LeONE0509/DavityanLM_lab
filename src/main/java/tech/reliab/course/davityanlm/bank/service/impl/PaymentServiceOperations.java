@@ -78,7 +78,6 @@ public class PaymentServiceOperations implements PaymentAccountService {
                 System.out.println("До: \n");
                 System.out.println(payAcc);
                 payAcc.setBank(bank);
-                //payAcc.setBankName();
                 System.out.println("После: \n");
                 System.out.println(payAcc);
             }
