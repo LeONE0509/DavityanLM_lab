@@ -4,6 +4,8 @@ import tech.reliab.course.davityanlm.bank.entity.Bank;
 import tech.reliab.course.davityanlm.bank.entity.PaymentAccount;
 import tech.reliab.course.davityanlm.bank.entity.User;
 
+import java.io.IOException;
+
 /**
  * Интерфейс операций, связанных с классом {@link PaymentAccount}
  *
@@ -45,5 +47,5 @@ public interface PaymentAccountService {
      * @param userId у какого пользователя переносим
      * @param bankId куда будем переносить счет
      */
-    void transitAcc(Integer userId, Integer bankId);
+    void transitAcc(Integer userId, Integer bankId) throws IOException;
 }

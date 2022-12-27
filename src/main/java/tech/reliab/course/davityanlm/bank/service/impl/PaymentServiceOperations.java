@@ -8,6 +8,7 @@ import tech.reliab.course.davityanlm.bank.service.PaymentAccountService;
 import tech.reliab.course.davityanlm.bank.service.UserService;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
@@ -65,12 +66,15 @@ public class PaymentServiceOperations implements PaymentAccountService {
     }
 
 
-    public void transitAcc(Integer userId, Integer bankId) {
+    public void transitAcc(Integer userId, Integer bankId) throws IOException {
+        File file = new File("Payments.txt");
+        file.createNewFile();
+
         try (BufferedReader reader = new BufferedReader(new FileReader("Payments.txt"))) {
             UserService userService = UserServiceOperations.USER_SERVICE;
             userService.getUsersPaysInfo(userId);
             String line;
-            while (!Objects.equals(line = reader.readLine(), "EOF")) {
+            while (!Objects.equals(reader.readLine(), "EOF")) {
             }
             while (!Objects.equals(line = reader.readLine(), null)) {
                 System.out.println(line);
