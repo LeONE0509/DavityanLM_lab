@@ -118,22 +118,19 @@ public class Main {
         Integer userId = in.nextInt();
 
         System.out.println("1 - Вывести все счета в txt файл");
-        System.out.println("2 - Перенести счет из одного банка в другой");
-        System.out.print("Выберите действие:");
+        System.out.println("2 - Перенести счет из моего банка в другой");
+        System.out.print("Выберите действие: ");
 
         int answer = in.nextInt();
         switch (answer) {
-            case 1: {
-                userService.getUsersPaysInfo(userId);
-                break;
+            case 1 -> userService.getUsersPaysInfo(userId);
+            case 2 -> {
+                System.out.println("Вы выбрали перенос счета в другой банк!");
+                System.out.print("Введите id банка, куда будем переносить: ");
+                int bankId = in.nextInt();
+                paymentAccountService.transitAcc(userId, bankId);
             }
-            case 2: {
-                paymentAccountService.transitAcc();
-                break;
-            }
-            default:
-                System.out.println("Надо было что-то выбрать");
-
+            default -> System.out.println("Надо было что-то выбрать");
         }
     }
 }

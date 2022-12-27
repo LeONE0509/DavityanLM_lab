@@ -42,6 +42,8 @@ public interface PaymentAccountService {
 
     /**
      * Процедура для переноса платежного счета
+     * @param userId у какого пользователя переносим
+     * @param bankId куда будем переносить счет
      */
-    void transitAcc();
+    void transitAcc(Integer userId, Integer bankId);
 }

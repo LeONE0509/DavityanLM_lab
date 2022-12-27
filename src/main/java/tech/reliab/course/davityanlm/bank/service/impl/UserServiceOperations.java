@@ -9,10 +9,7 @@ import static tech.reliab.course.davityanlm.bank.utils.Constants.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Класс-реализация операций клиента, реализует интерфейс клиента {@link User} <br>
@@ -251,6 +248,8 @@ public class UserServiceOperations implements UserService {
             /* запись в файл платежных счетов */
             writer.write("Платежный счет: \n");
 
+            List<Integer> pyAccId = new ArrayList<>();
+
             boolean isUserHasPaymentAcc = false;
             for (int i = 1; i <= QUANTITY_PAYS_AND_CREDITS; i++) {
                 PaymentAccount pay = paymentAccountService.getPaymentAccount(i);
@@ -259,6 +258,7 @@ public class UserServiceOperations implements UserService {
                         isUserHasPaymentAcc = true;
                         writer.write(pay.toString());
                         writer.flush();
+                        pyAccId.add(pay.getId());
                     }
                 }
             }
@@ -285,7 +285,9 @@ public class UserServiceOperations implements UserService {
                 writer.flush();
             }
 
-            writer.write("\nEOF");
+            writer.write("\nEOF\n");
+            writer.write("PyAcc: " + pyAccId.get(0) + "\n");
+            writer.write("PyAcc: " + pyAccId.get(1) + "\n");
         } catch (IOException ex) {
             throw new IOException(ex.getMessage());
         }

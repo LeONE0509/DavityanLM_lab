@@ -5,6 +5,7 @@ import tech.reliab.course.davityanlm.bank.entity.PaymentAccount;
 import tech.reliab.course.davityanlm.bank.entity.User;
 import tech.reliab.course.davityanlm.bank.service.BankService;
 import tech.reliab.course.davityanlm.bank.service.PaymentAccountService;
+import tech.reliab.course.davityanlm.bank.service.UserService;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -64,10 +65,14 @@ public class PaymentServiceOperations implements PaymentAccountService {
     }
 
 
-    public void transitAcc() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("transit.txt"))) {
+    public void transitAcc(Integer userId, Integer bankId) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Payments.txt"))) {
+            UserService userService = UserServiceOperations.USER_SERVICE;
+            userService.getUsersPaysInfo(userId);
             String line;
-            while ((line = reader.readLine()) != null) {
+            while (!Objects.equals(line = reader.readLine(), "EOF")) {
+            }
+            while (!Objects.equals(line = reader.readLine(), null)) {
                 System.out.println(line);
                 Pattern integerPattern = Pattern.compile("\\d+");
                 Matcher matcher = integerPattern.matcher(line);
@@ -76,7 +81,7 @@ public class PaymentServiceOperations implements PaymentAccountService {
                     integerList.add(Integer.parseInt(matcher.group()));
                 }
                 PaymentAccount payAcc = this.getPaymentAccount(integerList.get(0));
-                Bank bank = bankService.getBank(integerList.get(1));
+                Bank bank = bankService.getBank(bankId);
 
                 System.out.println("До: \n");
                 System.out.println(payAcc);
